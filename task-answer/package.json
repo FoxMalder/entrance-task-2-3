@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack-dev-server --mode development --open"
+    "watch": "webpack-dev-server --mode development --open --progress --inline"
   },
   "author": "aytic",
   "license": "ISC",
