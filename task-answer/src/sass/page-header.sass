@@ -1,0 +1,50 @@
+.page-header
+  height: 94px
+  box-sizing: border-box
+  border-bottom: 1px solid #f0f0f0
+
+  &__nav
+    display: flex
+    margin: 0 auto
+    width: 1286px
+
+    &-toggle-button
+      display: none
+
+    &-logo
+      margin-right: 50px
+      width: 110px
+      box-sizing: border-box
+
+      img
+        padding: 28px 0
+        width: 110px
+    
+    &-list-container
+      display: flex
+      flex-grow: 1
+      margin: 0
+      padding: 38px 0
+      height: 20px
+      list-style-type: none
+
+      li
+        padding: 0 14px
+      li:first-of-type
+        padding-left: 0
+      li:last-of-type
+        padding-right: 0
+        
+    &-list-item
+      font-family: $regular-font-stack
+      font-weight: bold
+      font-size: 16px;
+      color: #333333;
+      line-height: 20px;
+      text-decoration: none
+      opacity: .6
+
+      &:hover, &--active        
+        opacity: 1
+
+  

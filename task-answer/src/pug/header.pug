@@ -1,8 +1,18 @@
 header.page-header
+
   nav.page-header__nav
+    button.page-header__nav-toggle-button#toggle(type="button" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation")
+      span.page-header__nav-toggle-icon
+      
     a.page-header__nav-logo(href="#")
       img(src="/assets/Яндекс Дом.svg")
+    
     ul.page-header__nav-list-container
+      - var i = 1
       each val in ['Сводка', 'Устройства', 'Сценарии']
         li
-          a(rel="nofollow" href="#")= val
+          if i == 1 
+            a.page-header__nav-list-item.page-header__nav-list-item--active(rel="nofollow" href="#")= val
+          else
+            a.page-header__nav-list-item(rel="nofollow" href="#")= val  
+        - i++
