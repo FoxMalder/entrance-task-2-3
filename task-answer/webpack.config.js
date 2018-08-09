@@ -1,7 +1,13 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
   module: {
     rules: [
       {
@@ -27,10 +33,20 @@ module.exports = {
             "css-loader",
             "sass-loader"
         ]
-      }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?name=src/assets/[name].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: './src/assets' }
+    ]),
     new HtmlWebPackPlugin({
       template: "./src/index.pug",
       filename: "./index.html"
