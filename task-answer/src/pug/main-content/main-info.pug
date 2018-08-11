@@ -1,0 +1,20 @@
+mixin brief-card(name, status,icon)
+  article.brief-card(class='brief-card--'+icon)
+    p.brief-card__name= name
+    small.brief-card_status= status
+
+- var cards = [
+-  {name: 'Xiaomi Yeelight LED Smart Bulb', status: 'Включится в 17:00', icon: 'light-disabled'},
+-  {name: 'Philips Cooler', status: 'Начнет охлаждать в 16:30', icon: 'temperature-disabled'},
+-  {name: '', status: '', icon: ''}
+-  ]
+
+.main-info
+  section.main-info__summary
+    big.main-info__greeting Привет, Геннадий!
+    small.main-info__status Двери и окна закрыты, сигнализация включена.
+
+    include temperature-info
+  section.main-info__brief-cards
+    each card in cards
+      +brief-card(card.name, card.status, card.icon)

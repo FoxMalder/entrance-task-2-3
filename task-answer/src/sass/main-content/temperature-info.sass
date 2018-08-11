@@ -1,0 +1,36 @@
+.temperature-info
+  display: flex
+  margin: 0
+  padding: 0
+  list-style: none
+  font-size: 14px
+  color: $medium-color
+
+  &__item
+    min-width: 62px
+    min-height: 43px
+    margin-right: 18px
+
+    &--rainy
+      position: relative
+      margin-right: 18px + 26px
+
+      &::after
+        content: ''
+        position: absolute
+        top: 45%
+        right: -31px
+        width: 26px
+        height: 26px
+        background-image: url('/assets/cloud-drizzle.png')
+
+  &__location
+    margin: 0
+    margin-bottom: 4px
+
+  &__value
+    @include bold-font
+    font-size: 36px;
+    color: $primary-color;
+    letter-spacing: 0;
+    text-align: left;

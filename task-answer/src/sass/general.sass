@@ -1,5 +1,5 @@
 body
-  font-family: $regular-font-stack
+  @include regular-font
   color: $primary-color
 
 .container
@@ -9,3 +9,11 @@ body
   margin: 0 auto
   padding: 0 40px
   max-width: 1286px
+
+.section-heading
+  margin: 0
+  margin-bottom: 18px
+  @include bold-font
+  font-weight: bold
+  font-size: 18px;
+  color: $primary-color;
