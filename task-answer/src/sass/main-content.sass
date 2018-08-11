@@ -1,4 +1,18 @@
 .main-content
   padding-top: 29px
   height: calc(100vh - (#{$page-header-height + $page-footer-height}))
+  min-height: 598px
+  box-sizing: border-box
   background: grey
+
+  &__layout
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: auto
+    grid-column-gap: 26px
+    grid-row-gap: 30px
+    grid-template-areas: "main-thing favorite-scenarios" "favorite-devices favorite-devices"
+
+  @import 'main-content/main-thing'
+  @import 'main-content/favorite-scenarios'
+  @import 'main-content/favorite-devices'
