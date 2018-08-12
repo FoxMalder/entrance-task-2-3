@@ -1,1 +1,16 @@
-section.favorite-scenarios
+include brief-card
+
+- var cards = [
+-  {name: 'Выключить весь свет в доме и во дворе', icon: 'light'},
+-  {name: 'Я ухожу', icon: 'scheduled'},
+-  {name: 'Включить свет в коридоре', icon: 'light'},
+-  {name: 'Набрать горячую ванну', status: 'Начнется в 18:00', icon: 'temperature'},
+-  {name: 'Сделать пол тёплым во всей квартире', icon: 'temperature'}
+-  ]
+  section.favorite-scenarios
+    .heading-block-wrapper
+      h2.section-heading Избранные сценарии
+      +brief-cards-list-nav(true, true)
+    ul.favorite-scenarios__scenarios-list
+      each card in cards
+          +brief-card(card.name, card.status, card.icon, true)

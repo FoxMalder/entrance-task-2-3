@@ -1,1 +1,31 @@
+include brief-card
+include ../color-button-list-item
+
+- var cards = [
+-  {name: 'Xiaomi Yeelight LED Smart Bulb', status: 'Включено', icon: 'light'},
+-  {name: 'D-Link Omna 180 Cam', status: 'Включится в 17:00', icon: 'light-disabled'},
+-  {name: 'Elgato Eve Degree Connected', status: 'Выключено до 17:00', icon: 'temperature-disabled'},
+-  {name: 'LIFX Mini Day & Dusk A60 E27', status: 'Включится в 17:00', icon: 'light-disabled'},
+-  {name: 'Xiaomi Mi Air Purifier 2S', status: 'Включено', icon: 'light'},
+-  {name: 'Philips Zhirui', status: 'Выключено', icon: 'light-disabled'},
+-  {name: 'Xiaomi Mi Air Purifier 2S', status: 'Включено', icon: 'light'},
+- ]
+
+- var colorButtons = [
+-  {text: 'Все', active: true},
+-  {text: 'Кухня', active: false},
+-  {text: 'Зал', active: false},
+-  {text: 'Лампочки', active: false},
+-  {text: 'Камеры', active: false}
+- ]
+
 section.favorite-devices
+  .heading-block-wrapper
+    h2.section-heading Избранные устройства
+    .color-button-list
+      each colorButton in colorButtons
+        +color-button-list-item(colorButton.text, colorButton.active)
+    +brief-cards-list-nav(true)
+  ul.favorite-devices__devices-list
+    each card in cards
+        +brief-card(card.name, card.status, card.icon)

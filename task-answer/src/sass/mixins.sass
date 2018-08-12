@@ -5,3 +5,12 @@
 @mixin regular-font()
   font-family: $regular-font-stack
   font-weight: normal
+
+@mixin button-reset($margin, $padding, $border)
+  margin: $margin
+  padding: $padding
+  border: $border
+  -webkit-appearance: button;
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none

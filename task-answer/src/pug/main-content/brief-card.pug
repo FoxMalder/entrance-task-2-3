@@ -1,0 +1,11 @@
+mixin brief-card(name, status,icon, short)
+  li.brief-card(class=(icon ? 'brief-card--' + icon : '') + ' ' + (short ? 'brief-card--short' : ''))
+    if name
+      p.brief-card__name= name
+    if status
+      small.brief-card__status= status
+
+mixin brief-cards-list-nav(prevDisabled, nextDisabled)
+  .brief-cards-list-nav
+    button.brief-cards-list-nav__item.brief-cards-list-nav__item-prev(type="button" class=(prevDisabled ? 'brief-cards-list-nav__item-prev--disabled' : ''))
+    button.brief-cards-list-nav__item.brief-cards-list-nav__item-next(type="button" class=(nextDisabled ? 'brief-cards-list-nav__item-next--disabled' : ''))

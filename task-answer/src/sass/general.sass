@@ -1,7 +1,9 @@
 body
   @include regular-font
   color: $primary-color
-
+button
+  cursor: pointer
+  
 .container
   &--border-bottom
     border-bottom: 1px solid #f0f0f0
@@ -17,3 +19,19 @@ body
   font-weight: bold
   font-size: 18px;
   color: $primary-color;
+
+.heading-block-wrapper
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 20px
+
+  .section-heading
+    margin-bottom: 0
+
+.section-heading + .color-button-list
+  margin: 0 auto 0 13px
+
+::selection
+  color: $white
+  background: $medium-color

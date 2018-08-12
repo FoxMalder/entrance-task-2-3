@@ -1,0 +1,96 @@
+.brief-card
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  min-height: 120px
+  padding: 14px 15px
+  padding-top: 44px
+  margin-bottom: 15px
+  border-radius: 20px
+  box-sizing: border-box
+  background: $light-bg-color
+  transition: all .5s ease
+
+  &:hover
+    background: $white;
+    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+    cursor: pointer
+
+  &__name
+    min-height: 17px
+    margin: 0
+    margin-bottom: 3px
+    padding-bottom: 2px
+    @include bold-font
+    font-size: 14px
+    color: $primary-color
+    letter-spacing: 0
+    text-align: left
+
+  &__status
+    min-height: 15px
+    @include regular-font
+    font-size: 12px
+    color: $medium-color
+    letter-spacing: 0
+    text-align: left
+
+  &--short
+    min-height: 100px
+    .brief-card__name
+      margin-bottom: 0
+    .brief-card__status
+      margin-top: 2px
+
+  @mixin brief-card-icon($url)
+    content: ''
+    position: absolute
+    top: 14px
+    left: 14px
+    width: 24px
+    height: 24px
+    background-image: url($url)
+
+  &--temperature::before
+    @include brief-card-icon('/assets/icon_temperature_2@1x.png')
+
+  &--temperature-disabled::before
+    @include brief-card-icon('/assets/icon_temperature@1x.png')
+
+  &--light::before
+    @include brief-card-icon('/assets/icon_sun_2@1x.png')
+    
+  &--light-disabled::before
+    @include brief-card-icon('/assets/icon_sun@1x.png')
+
+  &--scheduled::before
+    @include brief-card-icon('/assets/icon_scheduled@1x.png')
+
+
+.brief-cards-list-nav
+  &__item
+    @include button-reset(0, 0, 0)
+    display: inline-block
+    width: 16px
+    height: 15px
+    font-size: 0
+    background: none
+    background-position: center
+    background-repeat: no-repeat
+
+    &-prev
+      background-image: url('/assets/Icons/arrow-left.svg')
+      margin-right: 15px
+      &--disabled
+        opacity: .5
+        background-image: url('/assets/Icons / Arrow Right / M Copy@1x.png')
+       
+    &-next
+      background-image: url('/assets/Icons/arrow-left.svg')
+      transform: rotate(180deg)
+      &--disabled
+        opacity: .5
+        background-image: url('/assets/Icons / Arrow Right / M Copy@1x.png')
+
+      

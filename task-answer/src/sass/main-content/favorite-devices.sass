@@ -1,4 +1,19 @@
 .favorite-devices
   grid-area: favorite-devices
   min-height: 168px
-  background: red
+
+  &__devices-list
+    display: flex
+    width: auto
+    margin: 0
+    padding: 0
+
+    .brief-card
+      //width: 200px
+      flex-basis: 200px
+      flex-grow: 1
+      flex-shrink: 0
+      margin-right: 15px
+    
+  .brief-cards-list-nav
+    padding-top: 12px
