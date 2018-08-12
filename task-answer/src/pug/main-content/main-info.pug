@@ -1,11 +1,11 @@
 mixin brief-card(name, status,icon)
-  article.brief-card(class='brief-card--'+icon)
+  li.brief-card(class='brief-card--'+icon)
     p.brief-card__name= name
-    small.brief-card_status= status
+    small.brief-card__status= status
 
 - var cards = [
--  {name: 'Xiaomi Yeelight LED Smart Bulb', status: 'Включится в 17:00', icon: 'light-disabled'},
 -  {name: 'Philips Cooler', status: 'Начнет охлаждать в 16:30', icon: 'temperature-disabled'},
+-  {name: 'Xiaomi Yeelight LED Smart Bulb', status: 'Включится в 17:00', icon: 'light-disabled'},
 -  {name: '', status: '', icon: ''}
 -  ]
 
@@ -15,6 +15,9 @@ mixin brief-card(name, status,icon)
     small.main-info__status Двери и окна закрыты, сигнализация включена.
 
     include temperature-info
+
   section.main-info__brief-cards
-    each card in cards
-      +brief-card(card.name, card.status, card.icon)
+    button#brief-cards-next.main-info__brief-cards-next(type="button")
+    ul.main-info__brief-cards-list
+      each card in cards
+        +brief-card(card.name, card.status, card.icon)

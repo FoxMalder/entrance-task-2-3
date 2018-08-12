@@ -25,6 +25,87 @@
     font-size: 14px;
     color: $primary-color
 
+  &__brief-cards
+    position: relative
+    display: flex
+    flex-direction: column
+
+    &-next
+      position: absolute
+      z-index: 10
+      top: 283px
+      left: 50%
+      margin-left: -8px
+      display: block
+      width: 16px
+      height: 16px
+      background: url('/assets/Icons / Arrow Double / M.png')
+      background-position: center
+      background-size: contain
+      border: 0
+      -webkit-appearance: button;
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+    
+    &-list
+      position: relative
+      margin: 0
+      padding: 0  
+      list-style: none
+      transition: transform .3s ease
+
+      .brief-card
+        position: relative
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        min-height: 120px
+        padding: 14px 15px
+        margin-bottom: 15px
+        border-radius: 20px
+        box-sizing: border-box
+        background: $light-bg-color
+
+        &__name
+          min-height: 17px
+          margin: 0
+          margin-bottom: 3px
+          @include bold-font
+          font-size: 14px
+          color: $primary-color
+          letter-spacing: 0
+          text-align: left
+
+        &__status
+          min-height: 15px
+          @include regular-font
+          font-size: 12px
+          color: $medium-color
+          letter-spacing: 0
+          text-align: left
+
+        @mixin brief-card-icon($url)
+          content: ''
+          position: absolute
+          top: 14px
+          left: 14px
+          width: 24px
+          height: 24px
+          background-image: url($url)
+
+        &--temperature::before
+          @include brief-card-icon('/assets/icon_temperature_2@1x.png')
+
+        &--temperature-disabled::before
+          @include brief-card-icon('/assets/icon_temperature@1x.png')
+
+        &--light::before
+          @include brief-card-icon('/assets/icon_sun_2@1x.png')
+          
+        &--light-disabled::before
+          @include brief-card-icon('/assets/icon_sun@1x.png')
+
 @import 'temperature-info'
 
 @media only screen and (min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 2),only screen and ( min-resolution: 192dpi)
