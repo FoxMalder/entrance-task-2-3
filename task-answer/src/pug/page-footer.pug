@@ -1,1 +1,8 @@
 footer.page-footer.container
+  nav.page-footer__nav.wrapper
+    ul.page-footer__list-container
+      each item in ['Помощь', 'Обратная связь', 'Разработчикам', 'Условия использования']
+        li
+          a(href="#")= item
+    small.page-footer__copy &copy; 2001–2017  ООО &laquo;Яндекс&raquo;
+

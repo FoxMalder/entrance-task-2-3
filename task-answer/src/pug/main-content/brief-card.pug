@@ -1,7 +1,7 @@
 mixin brief-card(name, status,icon, short)
   li.brief-card(class=(icon ? 'brief-card--' + icon : '') + ' ' + (short ? 'brief-card--short' : ''))
     if name
-      p.brief-card__name= name
+      p.brief-card__name !{name}
     if status
       small.brief-card__status= status
 
