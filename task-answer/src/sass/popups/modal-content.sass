@@ -75,7 +75,6 @@ $modal-content-button-height: 60px
     &-info
       display: flex
       &-value
-        margin-right: 2px
         @include bold-font()
         font-size: 36px;
         color: $primary-color;
@@ -86,9 +85,16 @@ $modal-content-button-height: 60px
         height: 50px
         margin-top: -3px
         margin-right: -3px
-        background-image: url('/assets/icon_temperature_2.svg')
+        margin-left: 2px
         background-size: contain
         background-repeat: no-repeat
+
+        &--temperature
+          background-image: url('/assets/icon_temperature_2.svg')
+        &--light
+          background-image: url('/assets/icon_sun_2.svg')
+          &-disabled
+            background-image: url('/assets/icon_sun.svg')
 
   .color-button-list
     margin-bottom: 25px
