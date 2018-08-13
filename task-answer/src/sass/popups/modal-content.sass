@@ -1,0 +1,97 @@
+$modal-content-width: 630px
+$modal-content-container-min-height: 230px
+$modal-content-container-margin-bottom: 20px
+$modal-content-button-height: 60px
+  
+.modal-content
+  position: fixed
+  z-index: 2000
+  top: 50%
+  left: 50%
+  margin-left: -($modal-content-width / 2)
+  margin-top: -(($modal-content-container-min-height + $modal-content-container-margin-bottom + $modal-content-button-height)  / 2)
+  width: $modal-content-width
+  min-height: $modal-content-container-min-height
+
+  &__settings
+    min-height: inherit
+    max-height: calc(100vh - ((50vh - #{ ($modal-content-container-min-height + $modal-content-container-margin-bottom + $modal-content-button-height) / 2}) * 2))
+    margin-bottom: $modal-content-container-margin-bottom
+    padding: 25px
+    padding-top: 26px
+    // padding-bottom: 21px // bug or not? empty space after range input
+    border-radius: 20px
+    box-sizing: border-box
+    background: $white
+
+  &__buttons
+    display: flex
+    justify-content: space-between
+    
+    @include bold-font()
+    font-size: 18px;
+    color: $black;
+    letter-spacing: 0;
+    text-align: center;
+
+  &__button
+    @include button-reset(0, 21px 21px 18px 21px, none)
+    flex: 100% 0 1
+    min-height: 60px
+    border-radius: 20px
+    transition: all .3s ease
+
+    &:not(:last-child)
+      margin-right: 16px
+        
+    &--apply
+      background: $accent
+      &:hover
+        background: darken( $accent, 10% )
+    &--close
+      background: $white
+      &:hover
+        background: darken( $white, 10% )
+
+  /* modal settings */
+
+  &__header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 18px
+  
+  &__heading
+    margin: 0
+    margin-bottom: 5px
+    padding: 0
+    @include bold-font()
+    font-size: 27px
+    color: $primary-color
+  &__status
+    @include regular-font()
+    font-size: 14px
+    color: $primary-color
+
+    &-info
+      display: flex
+      &-value
+        margin-right: 2px
+        @include bold-font()
+        font-size: 36px;
+        color: $primary-color;
+        letter-spacing: 0;
+        text-align: left;
+      &-icon
+        width: 45px
+        height: 50px
+        margin-top: -3px
+        margin-right: -3px
+        background-image: url('/assets/icon_temperature_2.svg')
+        background-size: contain
+        background-repeat: no-repeat
+
+  .color-button-list
+    margin-bottom: 25px
+
+@import 'range-slider'
+

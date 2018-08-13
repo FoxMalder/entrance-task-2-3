@@ -1,0 +1,124 @@
+/* невидимые или нестилизованные элементы input */
+input[type=range]
+  -webkit-appearance: none /* Скрывает слайдер, чтобы можно было создать свой */
+  width: 100% /* Указание параметра ширины требуется для Firefox. */
+
+input[type=range]::-webkit-slider-thumb 
+  -webkit-appearance: none
+
+
+input[type=range]:focus 
+  // outline: none /* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. */
+
+
+input[type=range]::-ms-track 
+  width: 100%
+  cursor: pointer
+  background: transparent // Скрывает слайдер, чтобы можно было добавить собственные стили.
+  border-color: transparent
+  color: transparent
+
+/* Range variables */
+
+$height: 60px
+$width: 60px
+$inner-border-size: 3px
+$outer-border-size: 4px
+$semi-transparent-grey: rgba(51,51,51,0.10)
+$background-gradient: linear-gradient(-90deg, #068FFF 2%, #FFD800 51%, #F76B1C 100%)
+$track-radius: 30px
+
+/* Range Thumb */
+
+@mixin range-thumb()
+  -webkit-appearance: none
+  border: $inner-border-size solid $semi-transparent-grey
+  height: $height
+  width: $width
+  box-sizing: border-box
+  border-radius: 50%
+  background: transparent
+  cursor: pointer
+  // margin-top: -15px; //Вам нужно указать значение для поля в Chrome, но в Firefox и IE это происходит автоматически
+  box-shadow: 0 0 0 $outer-border-size $white // Обводка ползунка
+
+/* Не перечислять через запятую, т.к. брайзер игнорирует неизвестный селектор целиком */
+
+input[type=range]
+  &::-webkit-slider-thumb
+    @include range-thumb()
+  &::-moz-range-thumb
+    @include range-thumb()
+  &::-ms-thumb
+    @include range-thumb()
+
+/* Range Track */
+
+// webkit
+input[type=range]::-webkit-slider-runnable-track
+  width: 100%
+  height: $height
+  cursor: pointer
+  background: $background-gradient
+  border-radius: $track-radius
+
+input[type=range]:focus::-webkit-slider-runnable-track
+  background: $background-gradient
+
+// moz
+input[type=range]::-moz-range-track
+  width: 100%
+  height: $height
+  cursor: pointer
+  background: $background-gradient
+  border-radius: $track-radius
+
+// ms
+input[type=range]::-ms-track
+  width: 100%
+  height: $height
+  cursor: pointer
+  background: transparent
+  border-color: transparent
+  border-width: 16px 0
+  color: transparent
+
+input[type=range]::-ms-fill-lower
+  background: $background-gradient
+  border-radius: $track-radius
+
+input[type=range]:focus::-ms-fill-lower
+  background: $background-gradient
+
+input[type=range]::-ms-fill-upper
+  background: $background-gradient
+  border-radius: $track-radius
+
+input[type=range]:focus::-ms-fill-upper
+  background: $background-gradient
+
+
+.range-slider
+  position: relative
+  display: block
+
+  &::before
+    content: '–10'
+    position: absolute
+    top: 22px
+    left: 16px
+    @include bold-font
+    font-size: 18px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: left;
+  &::after
+    content: '+30'
+    position: absolute
+    top: 22px
+    right: 20px
+    @include bold-font
+    font-size: 18px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: left;

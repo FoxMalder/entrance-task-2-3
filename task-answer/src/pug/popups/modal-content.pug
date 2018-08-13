@@ -1,0 +1,32 @@
+include ../color-button-list-item
+
+mixin temperature()
+  - var colorButtons = [
+  -  {text: 'Вручную', active: true},
+  -  {text: 'Холодно', active: false},
+  -  {text: 'Тепло', active: false},
+  -  {text: 'Жарко', active: false}
+  - ]
+  header.modal-content__header
+    .modal-content__name
+      h3.modal-content__heading Elgato Eve Degree Connected
+      small.modal-content__status Включено
+    .modal-content__status-info
+      span.modal-content__status-info-value +23
+      .modal-content__status-info-icon.modal-content__status-info-icon--temperature
+  .color-button-list
+      each colorButton in colorButtons
+        +color-button-list-item(colorButton.text, colorButton.active)
+  include range-slider
+
+
+mixin modal-content-popup(component)
+  
+  section.modal-content
+    .modal-content__settings
+      +#{component}()
+    .modal-content__buttons
+      button.modal-content__button.modal-content__button--apply(type="button") Применить
+      button.modal-content__button.modal-content__button--close(type="button") Закрыть
+
++modal-content-popup('temperature')

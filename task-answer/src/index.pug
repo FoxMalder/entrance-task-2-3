@@ -3,7 +3,12 @@ html
   head
     title Example
   body
+    .body-wrapper.content-blur
 
-    include ./pug/page-header
-    include ./pug/main-content
-    include ./pug/page-footer
+      include pug/page-header
+      include pug/main-content
+      include pug/page-footer
+
+      .modal-overlay.modal-overlay--show
+
+    include pug/popups/modal-content
