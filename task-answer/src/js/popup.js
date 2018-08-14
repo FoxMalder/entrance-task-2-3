@@ -134,51 +134,6 @@ export default function briefCard(containerCards, containerModals, url, appearen
             })
           })
         }
-        // card.addEventListener('click', (e) => {
-          
-        //   let cardElem = e.target.closest('li'),
-        //       cardCoords = cardElem.getBoundingClientRect(),
-        //       modalWindow = cardElem.querySelector('.modal-content'),
-        //       modalCoords = modalWindow.getBoundingClientRect();
-
-          
-        //       // console.log(cardCoords, modalCoords);
-
-        //   new Promise((res) => {
-        //     console.log(document.body.appendChild(modalWindow));
-        //     setTimeout(res, 10);
-        //   })
-        //     .then( () => {
-              
-        //     })
-        //     .then( () => {
-        //       modalWindow.classList.add('modal-content--show');
-        //       modalOverlay.classList.add('modal-overlay--show');
-        //       bodyWrapper.classList.add('content-blur');
-        //     })
-          
-        //   /* modalWindow.style.left = cardCoords.x + (parseInt(getComputedStyle(modalWindow).width) / 2) + 'px';
-        //   modalWindow.style.top = cardCoords.y + (parseInt(getComputedStyle(modalWindow).height) / 2) + 'px';
-        //   console.log(getComputedStyle(modalWindow).transform); */
-
-        //   //modalWindow.style.transform = `matrix(0, 0, 0, 0, ${cardCoords.x + (parseInt(getComputedStyle(modalWindow).width) / 2) + 'px'}, ${cardCoords.y + (parseInt(getComputedStyle(modalWindow).height) / 2) + 'px'})`
-        //   //modalWindow.style.transform = `matrix(0, 0, 0, 0, 0, 10px)`
-        //   /*setTimeout(() => {
-        //     modalWindow.classList.add('modal-content--show');
-        //     modalOverlay.classList.add('modal-overlay--show');
-        //     bodyWrapper.classList.add('content-blur');
-        //   }, 10)
-        //   modalOverlay.addEventListener('click', () => {
-        //     modalWindow.addEventListener('transitionend', () => {
-        //       cardElem.appendChild(modalWindow)
-        //     })
-        //     modalOverlay.classList.remove('modal-overlay--show')
-        //     modalWindow.classList.remove('modal-content--show');
-        //     bodyWrapper.classList.remove('content-blur');
-            
-        //   })*/
-        // })
-        
       })
     })
   
