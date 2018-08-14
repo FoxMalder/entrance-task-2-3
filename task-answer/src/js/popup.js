@@ -1,4 +1,6 @@
-const favoriteScanariosContainer = document.getElementById('favorite-scenarios__scenarios-list')      
+const favoriteScanariosContainer = document.getElementById('favorite-scenarios__scenarios-list'),
+      modalOverlay = document.querySelector('.modal-overlay'),
+      bodyWrapper = document.querySelector('.body-wrapper')      
 
 export default function popup(){
   fetch('/data/scenarios.json')
@@ -11,8 +13,23 @@ export default function popup(){
         card.className = `brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${shortCard ? 'brief-card--short' : ''}`;
         card.innerHTML = _renderTemplate(data, shortCard)
         card.addEventListener('click', (e) => {
-          let cardElem = e.target.closest('li');
-          cardElem.querySelector('.modal-content').classList.add('modal-content--show')
+          let cardElem = e.target.closest('li'),
+              modalWindow = cardElem.querySelector('.modal-content')
+          document.body.appendChild(modalWindow)
+          setTimeout(() => {
+            modalWindow.classList.add('modal-content--show');
+            modalOverlay.classList.add('modal-overlay--show');
+            bodyWrapper.classList.add('content-blur');
+          }, 10)
+          modalOverlay.addEventListener('click', () => {
+            modalWindow.addEventListener('transitionend', () => {
+              cardElem.appendChild(modalWindow)
+            })
+            modalOverlay.classList.remove('modal-overlay--show')
+            modalWindow.classList.remove('modal-content--show');
+            bodyWrapper.classList.remove('content-blur');
+            
+          })
         })
         favoriteScanariosContainer.appendChild(card); 
       })
