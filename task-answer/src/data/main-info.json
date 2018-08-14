@@ -1,0 +1,6 @@
+[
+  {"name": "Philips Cooler", "status": "Начнет охлаждать в 16:30", "icon": "temperature-disabled"},
+  {"name": "Xiaomi Yeelight LED Smart Bulb", "status": "Включится в 17:00", "icon": "light-disabled"},
+  {"name": "Xiaomi Mi Air Purifier 2S", "status": "Включено", "icon": "light"},
+  {"name": "Philips Zhirui", "status": "Выключено", "icon": "light-disabled"}
+]
