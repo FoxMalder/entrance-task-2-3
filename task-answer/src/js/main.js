@@ -14,4 +14,5 @@ document.querySelector('#brief-cards-next').addEventListener('click', (e) => {
 
 import popup from './popup'
 
-popup();
+popup('#favorite-scenarios__scenarios-list', '#modals-container__favorite-scenarios', '/data/scenarios.json', 'short');
+popup('#favorite-devices__devices-list', '#modals-container__favorite-devices', '/data/devices.json', '', true);
