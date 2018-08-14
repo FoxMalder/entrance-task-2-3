@@ -31,14 +31,8 @@ input[type=range]::-ms-track
   // margin-top: -15px; //Вам нужно указать значение для поля в Chrome, но в Firefox и IE это происходит автоматически
   box-shadow: 0 0 0 $outer-border-size $white // Обводка ползунка
 
-@mixin range-slider()
-  $height: 60px
-  $width: 60px
-  $inner-border-size: 3px
-  $outer-border-size: 4px
-  $semi-transparent-grey: rgba(51,51,51,0.10)
-  $background-gradient: linear-gradient(-270deg, #068FFF 2%, #FFD800 51%, #F76B1C 100%)
-  $track-radius: 30px
+@mixin range-slider($before-content, $after-content, $background-gradient)
+  
 
   /* Range Thumb */
 
@@ -100,28 +94,67 @@ input[type=range]::-ms-track
     background: $background-gradient
 
 
-  .range-slider
-    position: relative
-    display: block
+  &::before
+    content: $before-content
+    position: absolute
+    top: 22px
+    left: 16px
+    @include bold-font
+    font-size: 18px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: left;
+  &::after
+    content: $after-content
+    position: absolute
+    top: 22px
+    right: 20px
+    @include bold-font
+    font-size: 18px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: left;
+  
+$height: 60px
+$width: 60px
+$inner-border-size: 3px
+$outer-border-size: 4px
+$semi-transparent-grey: rgba(51,51,51,0.10)
+$track-radius: 30px
+
+@mixin before-after--light()
+  display: block
+  width: 38px
+  height: 38px
+  background-position: center
+  background-size: contain
+
+.range-slider
+  position: relative
+  display: block
+
+  &--temperature, &--temperature-disabled
+    $before-content: '-10'
+    $after-content: '+30'
+    $background-gradient: linear-gradient(-270deg, #068FFF 2%, #FFD800 51%, #F76B1C 100%)
+    @include range-slider($before-content, $after-content, $background-gradient)
+
+  &--light, &--light-disabled
+    $before-content: ''
+    $after-content: ''
+    $background-gradient: linear-gradient(-265deg, #FFE682 2%, #FF9E00 98%)
+    @include range-slider($before-content, $after-content, $background-gradient)
+
     &::before
-      content: '–10'
-      position: absolute
-      top: 22px
-      left: 16px
-      @include bold-font
-      font-size: 18px;
-      color: $white;
-      letter-spacing: 0;
-      text-align: left;
+      top: 12px
+      left: 12px
+      background-image: url('/assets/icon_sun_min.svg')
+      @include before-after--light()
     &::after
-      content: '+30'
-      position: absolute
-      top: 22px
-      right: 20px
-      @include bold-font
-      font-size: 18px;
-      color: $white;
-      letter-spacing: 0;
-      text-align: left;
-    &__slider    
-      display: block    
+      top: 12px
+      right: 16px
+      background-image: url('/assets/icon_sun_max.svg')
+      @include before-after--light()
+
+  &__slider    
+    display: block
