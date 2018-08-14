@@ -5,9 +5,15 @@ export default function popup(){
     .then( (data) => data.json() )
     .then( (data) => {
       favoriteScanariosContainer.innerHTML = ''
-      data.map( (scenario) => {
+      data.map( (data) => {
         let shortCard = true;
-        favoriteScanariosContainer.innerHTML += _renderTemplate(scenario, shortCard);
+        let card = document.createElement('LI');
+        card.className = `brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${shortCard ? 'brief-card--short' : ''}`;
+        card.innerHTML = _renderTemplate(data, shortCard)
+        card.addEventListener('click', (e) => {
+          console.log(e.target.closest('li'));
+        })
+        favoriteScanariosContainer.appendChild(card); 
       })
     })
   
@@ -41,11 +47,9 @@ function _renderTemplate(data, shortCard){
     </section>
   `, //  modal-content--show
   briefCardTemplate = `
-    <li class="brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${shortCard ? 'brief-card--short' : ''}">
       <p class="brief-card__name">${data.name}</p>
       ${data.status ? '<small class="brief-card__status">Начнется в 18:00</small>' : ''}
       ${briefCardModalContentTemplate}
-    </li>
   `;
   return briefCardTemplate
 }
