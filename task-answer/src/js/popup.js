@@ -114,10 +114,18 @@ export default function briefCard(containerCards, containerModals, url, appearen
             return initialCoords;
           }
 
+          function watchInputChange(card, modal){
+            let input = modal.querySelector('.range-slider__slider'),
+                statusInfo = modal.querySelector('.modal-content__status-info-value')
+            input.addEventListener('input', (e) => {
+              let inputValue = e.target.value;
+              statusInfo.textContent = inputValue >= 0 ? `+${inputValue}` : inputValue; 
+            })
+          }
+
           let modal = _renderModal(data)
           modalsContainer.appendChild(modal);
           let initialCoords = setInitialCoords(card, modal)
-          // console.log(card, modal, initialCoords);
 
           card.addEventListener('click', (e) => {
             moveModal(modal, '50%', '50%');
@@ -133,6 +141,8 @@ export default function briefCard(containerCards, containerModals, url, appearen
               toggleModal('close');
             })
           })
+
+          watchInputChange(card, modal)
         }
       })
     })
