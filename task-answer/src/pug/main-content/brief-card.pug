@@ -4,6 +4,7 @@ mixin brief-card(name, status,icon, short)
       p.brief-card__name !{name}
     if status
       small.brief-card__status= status
+    include ../popups/modal-content
 
 mixin brief-cards-list-nav(prevDisabled, nextDisabled)
   .brief-cards-list-nav

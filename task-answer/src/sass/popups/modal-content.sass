@@ -4,6 +4,8 @@ $modal-content-container-margin-bottom: 20px
 $modal-content-button-height: 60px
   
 .modal-content
+  opacity: 0
+  transform: scale(0)
   position: fixed
   z-index: 2000
   top: 50%
@@ -12,6 +14,12 @@ $modal-content-button-height: 60px
   margin-top: -(($modal-content-container-min-height + $modal-content-container-margin-bottom + $modal-content-button-height)  / 2)
   width: $modal-content-width
   min-height: $modal-content-container-min-height
+  transition: opacity .5s ease, transform .5s ease
+
+  &--show
+    opacity: 1
+    transform: scale(1)
+
 
   &__settings
     min-height: inherit
