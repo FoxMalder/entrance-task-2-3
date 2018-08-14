@@ -11,7 +11,8 @@ export default function popup(){
         card.className = `brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${shortCard ? 'brief-card--short' : ''}`;
         card.innerHTML = _renderTemplate(data, shortCard)
         card.addEventListener('click', (e) => {
-          console.log(e.target.closest('li'));
+          let cardElem = e.target.closest('li');
+          cardElem.querySelector('.modal-content').classList.add('modal-content--show')
         })
         favoriteScanariosContainer.appendChild(card); 
       })
@@ -45,7 +46,7 @@ function _renderTemplate(data, shortCard){
           <button class="modal-content__button modal-content__button--close" type="button">Закрыть</button>
       </div>
     </section>
-  `, //  modal-content--show
+  `,
   briefCardTemplate = `
       <p class="brief-card__name">${data.name}</p>
       ${data.status ? '<small class="brief-card__status">Начнется в 18:00</small>' : ''}
