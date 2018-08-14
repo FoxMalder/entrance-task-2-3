@@ -96,27 +96,40 @@ export default function briefCard(containerCards, containerModals, url, appearen
             }
           }
 
-          function moveModal(target, modal){
-            card = target.closest('li')
-            let cardCoords = card.getBoundingClientRect(),               
-                modalCoords = modal.getBoundingClientRect()
+          function moveModal(modal, x, y){
+            modal.style.left = x;
+            modal.style.top =  y;
+          }
 
-                modal.style.left = cardCoords.x + (parseInt(getComputedStyle(modal).width) / 2) + 'px';
-                modal.style.top = cardCoords.y + (parseInt(getComputedStyle(modal).height) / 2) + 'px';
+          function setInitialCoords(card, modal){
+            let cardCoords = card.getBoundingClientRect(),
+                initialCoords = {
+                  x: cardCoords.x + (parseInt(getComputedStyle(modal).width) / 2) + 'px',
+                  y: cardCoords.y + (parseInt(getComputedStyle(modal).height) / 2) + 'px'
+                }
+
+            modal.style.left = initialCoords.x;
+            modal.style.top = initialCoords.y;
+
+            return initialCoords;
           }
 
           let modal = _renderModal(data)
           modalsContainer.appendChild(modal);
+          let initialCoords = setInitialCoords(card, modal)
+          console.log(card, modal, initialCoords);
 
           card.addEventListener('click', (e) => {
-            moveModal(e.target, modal);
+            moveModal(modal, '50%', '50%');
             toggleModal('open');
           })
           modalOverlay.addEventListener('click', () => {
+            moveModal(modal, initialCoords.x, initialCoords.y);
             toggleModal('close');
           })
           modal.querySelectorAll('.modal-content__button--apply, .modal-content__button--close').forEach((btn)=> {
             btn.addEventListener('click', () => {
+              moveModal(modal, initialCoords.x, initialCoords.y);
               toggleModal('close');
             })
           })
