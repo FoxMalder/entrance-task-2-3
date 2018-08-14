@@ -11,3 +11,7 @@ document.querySelector('#brief-cards-next').addEventListener('click', (e) => {
   if(top > topMax)
     list.style.transform = `translateY(${top}px)`  
 })
+
+import popup from './popup'
+
+popup();
