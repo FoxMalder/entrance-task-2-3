@@ -117,7 +117,7 @@ export default function briefCard(containerCards, containerModals, url, appearen
           let modal = _renderModal(data)
           modalsContainer.appendChild(modal);
           let initialCoords = setInitialCoords(card, modal)
-          console.log(card, modal, initialCoords);
+          // console.log(card, modal, initialCoords);
 
           card.addEventListener('click', (e) => {
             moveModal(modal, '50%', '50%');
