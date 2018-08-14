@@ -99,22 +99,10 @@ export default function briefCard(containerCards, containerModals, url, appearen
           function moveModal(target, modal){
             card = target.closest('li')
             let cardCoords = card.getBoundingClientRect(),               
-                modalCoords = modal.getBoundingClientRect(),
-                modalNewCoords = [
-                  'card x ' + cardCoords.x,
-                  'card y ' + cardCoords.y,
-                  'modal x ' + modalCoords.x,
-                  'modal y ' + modalCoords.y,
-                  'modal w ' + parseInt(getComputedStyle(modal).width),
-                  'modal h ' + parseInt(getComputedStyle(modal).height),
-                  'offset y ' + pageYOffset
-                ]
-                //modal.style.transform = `matrix(0, 0, 0, 0, ${modalNewCoords.x}, ${modalNewCoords.y}`
+                modalCoords = modal.getBoundingClientRect()
+
                 modal.style.left = cardCoords.x + (parseInt(getComputedStyle(modal).width) / 2) + 'px';
                 modal.style.top = cardCoords.y + (parseInt(getComputedStyle(modal).height) / 2) + 'px';
-            console.log(card, modal, modalNewCoords, (cardCoords.x + (parseInt(getComputedStyle(modal).width) / 2) + 'px'), (cardCoords.y + parseInt(getComputedStyle(modal).height) + 'px'));
-
-
           }
 
           let modal = _renderModal(data)
