@@ -1,3 +1,18 @@
+const colorButtons = {
+  temperature: [
+    {text: 'Вручную', active: true},
+    {text: 'Холодно', active: false},
+    {text: 'Тепло', active: false},
+    {text: 'Жарко', active: false}
+  ],
+  light: [
+    {text: 'Вручную', active: true},
+    {text: 'Дневной свет', active: false},
+    {text: 'Вечерний свет', active: false},
+    {text: 'Рассвет', active: false}
+  ]
+}
+
 function _getAppearence(appearence){
   switch(appearence){
     case 'short':
@@ -23,25 +38,25 @@ function _renderModal(data){
 }
 
 function _renderTemplate(data, template){
+  let inputType = data.icon == 'temperature' || data.icon == 'temperature-disabled' ? 'temperature' : data.icon == 'light' || data.icon == 'light-disabled' ? 'light' : '';
   switch(template){
     case 'modalContentTemplate':
       return `        
         <div class="modal-content__settings">
             <header class="modal-content__header">
                 <div class="modal-content__name">
-                    <h3 class="modal-content__heading">${data.name}</h3><small class="modal-content__status">Включено</small></div>
-                <div class="modal-content__status-info"><span class="modal-content__status-info-value">+23</span>
-                    <div class="modal-content__status-info-icon modal-content__status-info-icon--temperature"></div>
+                    <h3 class="modal-content__heading">${data.name}</h3>
+                    <small class="modal-content__status">${data.status ? data.status : ''}</small></div>
+                <div class="modal-content__status-info">
+                  ${ inputType == 'temperature' ? '<span class="modal-content__status-info-value">+23</span>' : ''}
+                  <div class="modal-content__status-info-icon modal-content__status-info-icon--${data.icon}"></div>
                 </div>
             </header>
             <div class="color-button-list">
-                <button class="color-button-list__item color-button-list__item--active" type="button">Вручную</button>
-                <button class="color-button-list__item" type="button">Холодно</button>
-                <button class="color-button-list__item" type="button">Тепло</button>
-                <button class="color-button-list__item" type="button">Жарко</button>
+                ${ colorButtons[inputType].map( (el) => `<button class="color-button-list__item ${el.active ? 'color-button-list__item--active' : ''}" type="button">${el.text}</button>`).join('') }
             </div>
-            <label class="range-slider">
-                <input class="range-slider__slider" type="range" min="-10" max="30" value="23" id="range-slider-temperature">
+            <label class="range-slider range-slider--${data.icon}">
+                <input class="range-slider__slider" type="range" ${ inputType == 'temperature' ? 'min="-10" max="30" value="23" data-type="' + inputType +'"' : inputType == 'light' ? 'min="0" max="1000" value="300" data-type="' + inputType +'"' : ''}">
             </label>
         </div>
         <div class="modal-content__buttons">
@@ -142,7 +157,9 @@ export default function briefCard(containerCards, containerModals, url, appearen
             })
           })
 
-          watchInputChange(card, modal)
+          if(data.icon == 'temperature' || data.icon == 'temperature-disabled'){
+            watchInputChange(card, modal)
+          }
         }
       })
     })
