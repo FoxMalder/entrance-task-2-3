@@ -11,6 +11,6 @@ include brief-card
     .heading-block-wrapper
       h2.section-heading Избранные сценарии
       +brief-cards-list-nav(true, true)
-    ul.favorite-scenarios__scenarios-list
-      each card in cards
+    ul.favorite-scenarios__scenarios-list#favorite-scenarios__scenarios-list
+      // each card in cards
           +brief-card(card.name, card.status, card.icon, true)
