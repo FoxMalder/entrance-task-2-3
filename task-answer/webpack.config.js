@@ -40,15 +40,21 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file?name=src/assets/[name].[ext]',
+          'file?name=src/**/[name].[ext]',
           'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      },
+      {
+        test: /\.json$/,
+        loaders: [
+          'file?name=src/**/[name].[ext]'
         ]
       },
     ]
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: './src/assets' }
+      { from: './src/' }
     ]),
     new HtmlWebPackPlugin({
       template: "./src/index.pug",
