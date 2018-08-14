@@ -62,11 +62,9 @@ function _renderTemplate(data, template){
   }
 }
 
-export default function popup(containerCards, containerModals, url, appearence, hasModal){
+export default function briefCard(containerCards, containerModals, url, appearence, hasModal){
   const cardsContainer = document.querySelector(containerCards),
-        modalsContainer = document.querySelector(containerModals),
-        modalOverlay = document.querySelector('.modal-overlay'),
-        bodyWrapper = document.querySelector('.body-wrapper')
+        modalsContainer = document.querySelector(containerModals)
       
   fetch(url)
     .then( (data) => data.json() )
@@ -80,8 +78,38 @@ export default function popup(containerCards, containerModals, url, appearence, 
         cardsContainer.appendChild(card);
 
         if(hasModal){
+          const modalOverlay = document.querySelector('.modal-overlay'),
+                bodyWrapper = document.querySelector('.body-wrapper')
+
+          function toggleModal(action){
+            switch(action){
+              case 'open':
+                modal.classList.add('modal-content--show');
+                modalOverlay.classList.add('modal-overlay--show');
+                bodyWrapper.classList.add('content-blur');
+                break;
+              case 'close':
+                modalOverlay.classList.remove('modal-overlay--show')
+                modal.classList.remove('modal-content--show');
+                bodyWrapper.classList.remove('content-blur');
+                break;
+            }
+          }
+
           let modal = _renderModal(data)
           modalsContainer.appendChild(modal);
+
+          card.addEventListener('click', () => {
+            toggleModal('open');
+          })
+          modalOverlay.addEventListener('click', () => {
+            toggleModal('close');
+          })
+          modal.querySelectorAll('.modal-content__button--apply, .modal-content__button--close').forEach((btn)=> {
+            btn.addEventListener('click', () => {
+              toggleModal('close');
+            })
+          })
         }
         // card.addEventListener('click', (e) => {
           
