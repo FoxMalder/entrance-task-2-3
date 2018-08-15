@@ -2,11 +2,10 @@
   input(type="range" min="-10" max="30" value="23").range-slider__slider(data-type="light")
 label.range-slider.range-slider--floor
   .circle-indicator
-    svg(class="circle-indicator__diagram" width="220" height="220" data-percent="50" data-stroke-color="#55AB55" data-stroke-width="4")
-      mask#mask-active
-        path.circle-indicator__active-mask(d="M 623.0224387635643 682.3882659621092 A 220 220 0 0 1 386.69162351978804 688.5768061544647 L 500 500z" stroke="#000" stroke-width="30" fill="#f00")
-      path.circle-indicator__inactive(mask="url(#mask)" fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
-      path.circle-indicator__active(mask="url(#mask-active)" fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
+    svg(class="circle-indicator__diagram" width="220" height="220" data-percent="50")
+      g(mask="url(#sector-mask-divide")
+        path.circle-indicator__inactive(mask="url(#mask-inactive)" fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
+        path.circle-indicator__active(mask="url(#mask-active)" fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
     .circle-indicator__control-knob
       .circle-indicator__value +23
-  input(type="range" min="-10" max="30" value="23").range-slider__slider(data-type="floor")
+  input(type="range" min="-10" max="30" value="23" data-type="floor").range-slider__slider

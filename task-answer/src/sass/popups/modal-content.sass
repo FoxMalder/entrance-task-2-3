@@ -14,7 +14,7 @@ $modal-content-button-height: 60px
   margin-top: -(($modal-content-container-min-height + $modal-content-container-margin-bottom + $modal-content-button-height)  / 2)
   width: $modal-content-width
   min-height: $modal-content-container-min-height
-  transition: opacity .2s ease, transform .6s ease, left .6s ease, top .6s ease 
+  transition: opacity .2s ease, transform .6s ease, left .4s ease .2s, top .4s ease .2s 
   transform-origin: 0 0
 
   &--show
@@ -98,7 +98,7 @@ $modal-content-button-height: 60px
         background-size: contain
         background-repeat: no-repeat
 
-        &--temperature
+        &--temperature, &--floor
           background-image: url('/assets/icon_temperature_2.svg')
           &-disabled
             background-image: url('/assets/icon_temperature.svg')

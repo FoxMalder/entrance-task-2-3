@@ -52,10 +52,10 @@
     height: 24px
     background-image: url($url)
 
-  &--temperature::before
+  &--temperature::before, &--floor::before
     @include brief-card-icon('/assets/icon_temperature_2@1x.png')
 
-  &--temperature-disabled::before
+  &--temperature-disabled::before, &--floor-disabled::before
     @include brief-card-icon('/assets/icon_temperature@1x.png')
 
   &--light::before

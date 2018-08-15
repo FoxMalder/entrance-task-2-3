@@ -3,6 +3,7 @@
   {"name": "D-Link Omna 180 Cam", "status": "Включится в 17:00", "icon": "light-disabled"},
   {"name": "Elgato Eve Degree Connected", "status": "Выключено до 17:00", "icon": "temperature-disabled"},
   {"name": "LIFX Mini Day & Dusk A60 E27", "status": "Включится в 17:00", "icon": "light-disabled"},
+  {"name": "Xiaomi Warm Floor", "status": "Включено", "icon": "floor"},
   {"name": "Xiaomi Mi Air Purifier 2S", "status": "Включено", "icon": "light"},
   {"name": "Philips Zhirui", "status": "Выключено", "icon": "light-disabled"},
   {"name": "Xiaomi Mi Air Purifier 2S", "status": "Включено", "icon": "light"}

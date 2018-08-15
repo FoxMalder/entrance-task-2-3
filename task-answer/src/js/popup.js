@@ -38,7 +38,17 @@ function _renderModal(data){
 }
 
 function _renderTemplate(data, template){
-  let inputType = data.icon == 'temperature' || data.icon == 'temperature-disabled' ? 'temperature' : data.icon == 'light' || data.icon == 'light-disabled' ? 'light' : '';
+  let inputType;
+
+  if(data.icon == 'temperature' || data.icon == 'temperature-disabled')
+    inputType = 'temperature'
+  else if(data.icon == 'light' || data.icon == 'light-disabled')
+    inputType = 'light';
+  else if(data.icon == 'floor' || data.icon == 'floor-disabled')
+    inputType = 'floor';
+  else
+    inputType = ''
+
   switch(template){
     case 'modalContentTemplate':
       return `        
@@ -46,17 +56,39 @@ function _renderTemplate(data, template){
             <header class="modal-content__header">
                 <div class="modal-content__name">
                     <h3 class="modal-content__heading">${data.name}</h3>
-                    <small class="modal-content__status">${data.status ? data.status : ''}</small></div>
+                    <small class="modal-content__status">${data.status || ''}</small></div>
                 <div class="modal-content__status-info">
-                  ${ inputType == 'temperature' ? '<span class="modal-content__status-info-value">+23</span>' : ''}
+                  ${ inputType == 'temperature' || inputType == 'floor' ? '<span class="modal-content__status-info-value">+23</span>' : ''}
                   <div class="modal-content__status-info-icon modal-content__status-info-icon--${data.icon}"></div>
                 </div>
             </header>
-            <div class="color-button-list">
+            ${inputType != 'floor' ? `<div class="color-button-list">
                 ${ colorButtons[inputType].map( (el) => `<button class="color-button-list__item ${el.active ? 'color-button-list__item--active' : ''}" type="button">${el.text}</button>`).join('') }
-            </div>
+            </div>` : ''}
             <label class="range-slider range-slider--${data.icon}">
-                <input class="range-slider__slider" type="range" ${ inputType == 'temperature' ? 'min="-10" max="30" value="23" data-type="' + inputType +'"' : inputType == 'light' ? 'min="0" max="1000" value="300" data-type="' + inputType +'"' : ''}">
+                ${inputType == 'floor'?
+                  `<div class="circle-indicator">
+                    <svg class="circle-indicator__diagram" width="220" height="220" data-percent="50">
+                      <g mask="url(#sector-mask-divide">
+                        <path class="circle-indicator__inactive" mask="url(#mask-inactive)" fill-opacity="0" d="M 110, 110 m -96, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
+                        <path class="circle-indicator__active" mask="url(#mask-active)" fill-opacity="0" d="M 110, 110 m -96, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
+                      </g>
+                    </svg>
+                    <div class="circle-indicator__control-knob">
+                      <div class="circle-indicator__value">+23</div>
+                    </div>
+                  </div>` : ''
+                }
+                <input class="range-slider__slider" type="range" ${ ( (inputType) => {
+                  if(inputType == 'temperature')
+                    return 'min="-10" max="30" value="23" data-type="' + inputType +'"';
+                  else if(inputType == 'light')
+                    return 'min="0" max="1000" value="300" data-type="' + inputType +'"';
+                  else if(inputType == 'floor')
+                    return 'input(type="range" min="0" max="30" value="23" data-type="' + inputType + '"';
+                  else
+                    return ''
+                } )(inputType)}">
             </label>
         </div>
         <div class="modal-content__buttons">
@@ -68,7 +100,7 @@ function _renderTemplate(data, template){
     case 'briefCardTemplate':
       return `
         <p class="brief-card__name">${data.name}</p>
-        ${data.status ? '<small class="brief-card__status">Начнется в 18:00</small>' : ''}
+        ${data.status ? '<small class="brief-card__status">'+ data.status +'</small>' : ''}
       `
       break;
     default:
