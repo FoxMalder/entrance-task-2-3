@@ -1,3 +1,5 @@
+import drawSector from './draw-sector.js'
+
 const colorButtons = {
   temperature: [
     {text: 'Вручную', active: true},
@@ -68,10 +70,10 @@ function _renderTemplate(data, template){
             <label class="range-slider range-slider--${data.icon}">
                 ${inputType == 'floor'?
                   `<div class="circle-indicator">
-                    <svg class="circle-indicator__diagram" width="220" height="220" data-percent="50">
-                      <g mask="url(#sector-mask-divide">
-                        <path class="circle-indicator__inactive" mask="url(#mask-inactive)" fill-opacity="0" d="M 110, 110 m -96, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
-                        <path class="circle-indicator__active" mask="url(#mask-active)" fill-opacity="0" d="M 110, 110 m -96, 0 a 95,95 0 1,0 190,0 a 95,95 0 1,0 -190,0" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
+                    <svg class="circle-indicator__diagram" width="220" height="220" data-percent="76">
+                      <g>
+                        <path class="circle-indicator__inactive" fill-opacity="0" d="" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
+                        <path class="circle-indicator__active"ill-opacity="0" d="" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
                       </g>
                     </svg>
                     <div class="circle-indicator__control-knob">
@@ -171,6 +173,8 @@ export default function briefCard(containerCards, containerModals, url, appearen
           }
 
           let modal = _renderModal(data)
+          if(data.icon == 'floor' || data.icon == 'floor-disabled')
+            drawSector(modal)
           modalsContainer.appendChild(modal);
           let initialCoords = setInitialCoords(card, modal)
 
