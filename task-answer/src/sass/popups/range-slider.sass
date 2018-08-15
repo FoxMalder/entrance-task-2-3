@@ -156,5 +156,55 @@ $track-radius: 30px
       background-image: url('/assets/icon_sun_max.svg')
       @include before-after--light()
 
+  &--floor
+    position: relative
+    width: 220px
+    height: 220px
+    margin: 0 auto
+    font-size: 0
+
+  
   &__slider    
     display: block
+
+.circle-indicator
+
+  &__diagram
+    overflow: visible !important
+
+  &__control-knob
+    position: absolute
+    top: 20px
+    left: 20px  
+    height: 180px
+    width: 180px
+    border-radius: 50%
+    background: $lightest-bg-color;
+    box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);
+
+    &::after
+      content: ''
+      position: absolute;
+      display: block;
+      box-sizing: content-box;
+      top: 30px;
+      margin-top: -30px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      padding: 0;
+      background: transparent;
+      border: 5px solid transparent;
+      border-bottom-color: $primary-color;
+      border-top: 0;
+      transform: rotate(90deg)
+      transform-origin: 0 90px
+
+  &__value
+    margin-left: -8px
+    @include bold-font
+    font-size: 66px;
+    color: $primary-color;
+    letter-spacing: 0;
+    line-height: 180px
+    text-align: center;

@@ -1,4 +1,13 @@
 // label.range-slider.range-slider--light
   input(type="range" min="-10" max="30" value="23").range-slider__slider(data-type="light")
-label.range-slider.range-slider--light
-  input(type="range" min="-10" max="30" value="23").range-slider__slider(data-type="light")
+label.range-slider.range-slider--floor
+  .circle-indicator
+    svg(class="circle-indicator__diagram" width="220" height="220" data-percent="50" data-stroke-color="#55AB55" data-stroke-width="4")
+      //circle(class="circle-indicator__circle" cx="50%" cy="50%" r="50%" stroke="#D1D1D1" stroke-width="60" fill="none")
+      // path(class="circle-indicator__arc" fill="none" stroke="darkgoldenrod" stroke-width=".06" stroke-dashoffset="19" stroke-dasharray="19")
+      path.circle-indicator__inactive(fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
+      path.circle-indicator__active(fill-opacity="0" d="M "+220/2+", "+220/2+" m -"+96+", 0 a "+95+","+95+" 0 1,0 "+95*2+",0 a "+95+","+95+" 0 1,0 -"+95*2+",0" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none")
+      //text(class="circle-indicator__text" x="50%" y="33" style="text-anchor: middle; font-size: 13px;") sds
+    .circle-indicator__control-knob
+      .circle-indicator__value +23
+  input(type="range" min="-10" max="30" value="23").range-slider__slider(data-type="floor")
