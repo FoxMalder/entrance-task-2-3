@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ProvidePlugin = require('webpack-provide-global-plugin');
 module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -38,16 +39,54 @@ module.exports = {
         ]
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          "css-loader"
+        ]
+      },
+      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file?name=src/**/[name].[ext]',
-          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+          'file-loader?name=src/**/[name].[ext]',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                quality: 65
+              },
+              pngquant:{
+                quality: "10-20",
+                speed: 4
+              },
+              svgo:{
+                plugins: [
+                  {
+                    removeViewBox: false
+                  },
+                  {
+                    removeEmptyAttrs: false
+                  }
+                ]
+              },
+              gifsicle: {
+                optimizationLevel: 7,
+                interlaced: false
+              },
+              optipng: {
+                optimizationLevel: 7,
+                interlaced: false
+              }
+            }
+          }
         ]
       },
       {
         test: /\.json$/,
         loaders: [
-          'file?name=src/**/[name].[ext]'
+          'file-loader?name=src/**/[name].[ext]'
         ]
       },
     ]

@@ -1,6 +1,6 @@
-
+import $ from 'jquery';
+import slick from 'slick-carousel';
 import briefCard from './popup';
-
 console.log("loading js");
 /* Code just for some btton enteractivity not for production.
    For production use slider */
