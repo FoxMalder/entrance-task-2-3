@@ -1,5 +1,5 @@
 {
-  "name": "webpack4-pug-sass-example",
+  "name": "yandex-shri-2018-task-2",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "watch": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --mode development\""
   },
-  "author": "aytic",
+  "author": "ArtemeeSenin",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {

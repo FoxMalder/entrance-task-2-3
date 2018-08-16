@@ -14,12 +14,13 @@ $modal-content-button-height: 60px
   margin-top: -(($modal-content-container-min-height + $modal-content-container-margin-bottom + $modal-content-button-height)  / 2)
   width: $modal-content-width
   min-height: $modal-content-container-min-height
-  transition: opacity .2s ease, transform .6s ease, left .4s ease .2s, top .4s ease .2s 
+  transition: opacity .2s ease, transform .6s ease, left .4s ease , top .4s ease 
   transform-origin: 0 0
 
   &--show
     opacity: 1
     transform: scale(1)
+    transition: opacity .2s ease, transform .6s ease, left .4s ease .15s, top .4s ease .15s 
 
 
   &__settings

@@ -146,8 +146,12 @@ export default function briefCard(containerCards, containerModals, url, appearen
           }
 
           function moveModal(modal, x, y){
+            console.log(x, y);
+            console.log(modal.style.left, modal.style.top);
             modal.style.left = x;
             modal.style.top =  y;
+
+            
           }
 
           function setInitialCoords(card, modal){
@@ -175,6 +179,7 @@ export default function briefCard(containerCards, containerModals, url, appearen
           let modal = _renderModal(data)
           if(data.icon == 'floor' || data.icon == 'floor-disabled')
             drawSector(modal)
+            
           modalsContainer.appendChild(modal);
           let initialCoords = setInitialCoords(card, modal)
 
