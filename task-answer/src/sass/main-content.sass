@@ -4,9 +4,11 @@
   min-height: 598px
   box-sizing: border-box
 
-  @media screen and (max-width: 1375px)
+  @media screen
+    height: auto
     padding-top: 0
-  & .section-heading
+
+  & .main-thing .section-heading
     display: none
 
   &__layout
@@ -16,6 +18,14 @@
     grid-column-gap: 26px
     grid-row-gap: 28px
     grid-template-areas: "main-thing favorite-scenarios" "favorite-devices favorite-devices"
+
+    @media screen
+      grid-template-columns: 335px
+      grid-template-rows: auto
+      grid-column-gap: 0
+      grid-row-gap: 30px
+      grid-template-areas: "main-thing" "favorite-scenarios" "favorite-devices"
+      padding-bottom: 64px
 
 @import 'main-content/main-thing'
 @import 'main-content/favorite-scenarios'

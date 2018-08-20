@@ -10,6 +10,15 @@
   overflow: hidden
   background: $light-bg-color url('/assets/bg@1x.png')
 
+  @media screen
+    grid-template-columns: 1fr
+    grid-column-gap: 0
+    grid-row-gap: 20px 
+    padding-top: 18px
+    padding-left: 20px
+    min-height: 282px
+    height: auto
+
   &__greeting
     display: block
     margin-top: 6px
@@ -18,12 +27,20 @@
     font-size: 27px;
     color: $primary-color
 
+    @media screen
+      margin-top: 5px
+      font-size: 18px
+
   &__status
     display: block
     margin-bottom: 25px
     @include regular-font
     font-size: 14px;
     color: $primary-color
+
+    @media screen
+      font-size: 12px
+      margin-bottom: 14px
 
   &__brief-cards
     position: relative

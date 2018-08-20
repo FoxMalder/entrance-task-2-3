@@ -12,6 +12,12 @@
   background: $light-bg-color
   transition: all .5s ease
 
+  @media screen
+    width: 200px
+    margin-bottom: 0
+    margin-right: 20px
+    padding-top: 55px
+
   &:hover
     background: $white;
     box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
@@ -27,6 +33,12 @@
     color: $primary-color
     letter-spacing: 0
     text-align: left
+    @media screen
+      display: table-cell
+      height: 32px
+      margin-bottom: 0
+      padding-bottom: 0
+      vertical-align: bottom
 
   &__status
     min-height: 15px
@@ -69,6 +81,8 @@
 
 
 .brief-cards-list-nav
+  @media screen
+    display: none
   &__item
     @include button-reset(0, 0, 0)
     display: inline-block

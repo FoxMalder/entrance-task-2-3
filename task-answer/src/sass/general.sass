@@ -1,7 +1,11 @@
+html
+  width: 375px
+  -webkit-text-size-adjust: none;
+  
 body
   @include regular-font
   color: $primary-color
-  width: 375px
+
 button
   cursor: pointer
 input, textarea 
@@ -10,7 +14,7 @@ input, textarea
   &--border-bottom
     border-bottom: 1px solid #f0f0f0
 
-    @media screen and (max-width: 1375px)
+    @media screen
       border: none
 
 .wrapper
@@ -18,8 +22,19 @@ input, textarea
   padding: 0 40px
   max-width: 1286px
 
-  @media screen and (max-width: 1375px)
+  @media screen
     padding: 0 20px
+
+.body-wrapper
+  transition: all .6s ease
+  
+  @media screen
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+  
+.content-blur
+  filter: blur(2px);
 
 .modal-overlay
   position: fixed
@@ -33,11 +48,7 @@ input, textarea
 
   &--show
     display: block
-.body-wrapper
-  transition: all .6s ease
-  
-.content-blur
-  filter: blur(2px);
+
 
 .section-heading
   margin: 0

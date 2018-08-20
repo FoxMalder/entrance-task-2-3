@@ -11,6 +11,10 @@
     min-height: 43px
     margin-right: 18px
 
+    @media screen
+      min-width: 60px
+      margin-right: 0
+
     &--rainy
       position: relative
       margin-right: 18px + 26px
@@ -24,9 +28,20 @@
         height: 26px
         background-image: url('/assets/cloud-drizzle.png')
 
+        @media screen
+          top: 50%
+          right: -5px
+          width: 20px
+          height: 20px
+          background-size: contain
+
   &__location
     margin: 0
     margin-bottom: 4px
+
+    @media screen
+      margin-bottom: 6px
+      font-size: 12px
 
   &__value
     @include bold-font
@@ -34,3 +49,6 @@
     color: $primary-color;
     letter-spacing: 0;
     text-align: left;
+
+    @media screen
+      font-size: 24px
