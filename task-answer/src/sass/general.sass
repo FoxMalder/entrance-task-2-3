@@ -27,7 +27,8 @@ input, textarea
 
 .body-wrapper
   transition: all .6s ease
-  
+  overflow-x: hidden
+
   @media screen
     display: flex
     flex-direction: column
@@ -64,11 +65,11 @@ input, textarea
   align-items: center
   margin-bottom: 20px
 
+  @media screen
+    height: 21px
+
   .section-heading
     margin-bottom: 0
-
-.section-heading + .color-button-list
-  margin: 0 auto 0 13px
 
 ::selection
   color: $white

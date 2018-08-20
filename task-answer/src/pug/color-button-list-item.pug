@@ -1,2 +1,2 @@
-mixin color-button-list-item(text, active)
-  button.color-button-list__item(type="button" class=(active ? 'color-button-list__item--active' : ''))= text
+mixin color-button-list-item(text, active, toggle)
+  button.color-button-list__item(type="button" class=((active ? 'color-button-list__item--active' : '') + ' ' + (toggle ? 'color-button-list__item--toggle' : '')))= text
