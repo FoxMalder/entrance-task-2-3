@@ -1,6 +1,7 @@
-тззbody
+body
   @include regular-font
   color: $primary-color
+  width: 375px
 button
   cursor: pointer
 input, textarea 
@@ -8,10 +9,17 @@ input, textarea
 .container
   &--border-bottom
     border-bottom: 1px solid #f0f0f0
+
+    @media screen and (max-width: 1375px)
+      border: none
+
 .wrapper
   margin: 0 auto
   padding: 0 40px
   max-width: 1286px
+
+  @media screen and (max-width: 1375px)
+    padding: 0 20px
 
 .modal-overlay
   position: fixed
@@ -38,6 +46,10 @@ input, textarea
   font-weight: bold
   font-size: 18px;
   color: $primary-color;
+  
+@media screen and (max-width: 1375px)
+  .main-content .section-heading
+    display: none
 
 .heading-block-wrapper
   display: flex
@@ -54,3 +66,6 @@ input, textarea
 ::selection
   color: $white
   background: $medium-color
+
+.tns-ovh
+  overflow: visible !important

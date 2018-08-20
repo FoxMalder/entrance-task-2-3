@@ -13,8 +13,9 @@ include brief-card
 
     include temperature-info
 
-  section.main-info__brief-cards
-    button#brief-cards-next.main-info__brief-cards-next(type="button")
-    ul.main-info__brief-cards-list#main-info__brief-cards-list
+  section.main-info__brief-cards#main-info
+    button.main-info__brief-cards-next(type="button")
+    button.main-info__brief-cards-prev(type="button" style="display: none")
+    ul.main-info__brief-cards-list.slider#main-info__brief-cards-list
       // each card in cards
         +brief-card(card.name, card.status, card.icon)

@@ -7,10 +7,10 @@ include brief-card
 -  {name: 'Набрать горячую ванну', status: 'Начнется в 18:00', icon: 'temperature'},
 -  {name: 'Сделать пол тёплым во всей квартире', icon: 'temperature'}
 -  ]
-  section.favorite-scenarios
+  section.favorite-scenarios#favorite-scenarios
     .heading-block-wrapper
       h2.section-heading Избранные сценарии
-      +brief-cards-list-nav(true, true)
-    ul.favorite-scenarios__scenarios-list#favorite-scenarios__scenarios-list
+      +brief-cards-list-nav()
+    ul.favorite-scenarios__scenarios-list#favorite-scenarios__scenarios-list.slider
       // each card in cards
           +brief-card(card.name, card.status, card.icon, true)

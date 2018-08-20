@@ -11,8 +11,7 @@
   "author": "ArtemeeSenin",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.3.1",
-    "slick-carousel": "^1.8.1"
+    "tiny-slider": "^2.8.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

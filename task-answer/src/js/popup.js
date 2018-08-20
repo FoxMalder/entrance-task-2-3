@@ -1,4 +1,5 @@
 import drawSector from './draw-sector.js'
+import slider from './slider';
 
 const colorButtons = {
   temperature: [
@@ -202,6 +203,25 @@ export default function briefCard(containerCards, containerModals, url, appearen
             watchInputChange(card, modal)
           }
         }
+      })
+    })
+    .then(() => {
+      slider('#favorite-devices', {
+        axis: 'horizontal',
+        items: 6,
+        rewind: false,
+        prevButton: ' .brief-cards-list-nav__item-prev',
+        nextButton: ' .brief-cards-list-nav__item-next'
+      })
+      /*slider('#favorite-scenarios', {
+        axis: 'horizontal'
+      })*/
+      slider('#main-info', {
+        axis: 'vertical',
+        items: 3,
+        rewind: true,
+        nextButton: ' .main-info__brief-cards-next',
+        prevButton: ' .main-info__brief-cards-prev'
       })
     })
   

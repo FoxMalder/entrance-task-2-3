@@ -6,7 +6,7 @@ mixin brief-card(name, status,icon, short)
       small.brief-card__status= status
     include ../popups/modal-content
 
-mixin brief-cards-list-nav(prevDisabled, nextDisabled)
+mixin brief-cards-list-nav()
   .brief-cards-list-nav
-    button.brief-cards-list-nav__item.brief-cards-list-nav__item-prev(type="button" class=(prevDisabled ? 'brief-cards-list-nav__item-prev--disabled' : ''))
-    button.brief-cards-list-nav__item.brief-cards-list-nav__item-next(type="button" class=(nextDisabled ? 'brief-cards-list-nav__item-next--disabled' : ''))
+    button.brief-cards-list-nav__item.brief-cards-list-nav__item-prev
+    button.brief-cards-list-nav__item.brief-cards-list-nav__item-next
