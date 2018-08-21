@@ -16,6 +16,8 @@ const colorButtons = {
   ]
 }
 
+var adaptiveSlider;
+
 function _getAppearence(appearence){
   switch(appearence){
     case 'short':
@@ -216,14 +218,51 @@ export default function briefCard(containerCards, containerModals, url, appearen
       /*slider('#favorite-scenarios', {
         axis: 'horizontal'
       })*/
-      slider('#main-info', {
+      adaptiveSlider = slider('#main-info', {
         axis: 'vertical',
         items: 3,
         rewind: true,
         nextButton: ' .main-info__brief-cards-next',
         prevButton: ' .main-info__brief-cards-prev'
       })
+
+
+      
     })
   
 }
+
+/*function debounce(func){
+  var timer;
+  return function(event){
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(func,300,event);
+  };
+}
+
+window.addEventListener("resize",debounce(function(e){
+  if(document.documentElement.clientWidth > 375 && adaptiveSlider.axis !== 'vertical'){
+    console.log(adaptiveSlider.destroy())
+    //adaptiveSlider.destroy()
+
+    adaptiveSlider = slider('#main-info', {
+      axis: 'vertical',
+      items: 3,
+      rewind: true,
+      nextButton: ' .main-info__brief-cards-next',
+      prevButton: ' .main-info__brief-cards-prev'
+    })
+  
+  } else if(document.documentElement.clientWidth <= 375 && adaptiveSlider.axis !== 'horizontal') {
+    //adaptiveSlider.destroy()
+
+    adaptiveSlider = slider('#main-info', {
+      axis: 'horizontal',
+      items: 3,
+      rewind: true,
+      nextButton: ' .main-info__brief-cards-next',
+      prevButton: ' .main-info__brief-cards-prev'
+    })
+  }
+}));*/
 

@@ -2,7 +2,6 @@ import "./../css/tiny-slider.css"
 import { tns } from "./../../node_modules/tiny-slider/src/tiny-slider"
 
 function initSlider(tag, params){
-  console.log(tag, params);
   let args = {
     container: tag + ' .slider',
     loop: false,
@@ -15,19 +14,16 @@ function initSlider(tag, params){
     nav: false,
     controls: true,
     elastic:true,
+    fixedWidth: 200,
+    gutter: 15,
+    axis: params.axis,
     responsive: {
-      320: {
-        axis: 'horizontal',
-        controls: false,
-        fixedWidth: 200,
-        gutter: 0
+      0: {
+        controls: false
       },
-      376: {        
-        axis: params.axis,
-        fixedWidth: 200,    
-        gutter: 15,
+      376 : {        
         controls: true
-      }
+      },
     }
   }
 
@@ -35,6 +31,7 @@ function initSlider(tag, params){
   if(params.nextButton) args.nextButton = tag + params.nextButton
   //if(params.axis == 'vertical') args.nested = 'outer'
   var slider = tns(args);
+  return slider;
 
 
   }

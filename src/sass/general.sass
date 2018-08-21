@@ -35,8 +35,17 @@ input, textarea
   overflow-x: hidden
 
   //@media screen and (max-width: 375px)
-    
+
+.tns-horizontal.tns-subpixel>div, .tns-horizontal.tns-subpixel>li
   
+  @media screen and (min-width: 376px)
+    display: flex !important
+.main-info__brief-cards
+  @media screen and (max-width: 375px)
+    height: 120px
+.brief-card.tns-item
+  @media screen and (max-width: 375px)
+    display: list-item !important
 .content-blur
   filter: blur(2px);
 
