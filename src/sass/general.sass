@@ -28,13 +28,13 @@ input, textarea
 
 .body-wrapper
   transition: all .6s ease
-  @media screen and (max-width: 375px)
-    overflow-x: hidden
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  overflow-x: hidden
 
-  @media screen and (max-width: 375px)
-    display: flex
-    flex-direction: column
-    justify-content: space-between
+  //@media screen and (max-width: 375px)
+    
   
 .content-blur
   filter: blur(2px);
