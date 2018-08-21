@@ -22,3 +22,10 @@ briefCard('#favorite-devices__devices-list', '#modals-container__favorite-device
 document.querySelector('.color-button-list__item--toggle').addEventListener('click', (e) => {
   e.target.closest('.color-button-list').querySelector('.color-button-list-wrapper').classList.toggle('color-button-list-wrapper--show')
 })
+
+let menuToggler = document.querySelector('#toggle')
+menuToggler.addEventListener('click', (e) => {
+  menuToggler.classList.toggle('page-header__nav-toggle-button--menu-open')
+  document.querySelector('.page-header__nav-list-container').classList.toggle
+  ('page-header__nav-list-container--show')
+})

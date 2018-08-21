@@ -7,10 +7,45 @@
     min-height: $page-header-height-mob
 
   &__nav
-    display: flex    
+    display: flex
+    justify-content: space-between  
+
+    @media screen
+      position: relative
 
     &-toggle-button
+      position: relative
+      order: 1
+      @include button-reset(0, 0 , none)
       display: none
+    
+      &--menu-open
+        transform: rotate(90deg)
+
+      @media screen
+        display: block
+        width: 16px
+        height: 2px
+        margin-top: 32px
+        background: black
+
+      &::before
+        content: ''
+        position: absolute
+        top: -6px
+        display: block
+        width: 16px
+        height: 2px
+        background: black
+      &::after
+        content: ''
+        position: absolute
+        bottom: -6px
+        display: block
+        width: 16px
+        height: 2px
+        background: black
+
 
     &-logo
       margin-right: 50px
@@ -34,8 +69,23 @@
       list-style-type: none
 
       @media screen
+        position: absolute
+        z-index: 3000
         display: none
         padding: 14px 0 13px 0
+
+      &--show
+        display: flex
+        flex-direction: column
+        top: 64px
+        left: 0
+        width: 100%
+        padding: 20px
+        background: white
+
+        li 
+          padding: 0 !important
+
 
       li
         padding: 0 14px
