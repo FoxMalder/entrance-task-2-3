@@ -8,7 +8,7 @@ input[type=range]::-webkit-slider-thumb
 
 
 input[type=range]:focus 
-  // outline: none /* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. */
+  outline: none /* Убирает голубую границу у элемента. Хотя, возможно, и стоит создавать некоторое оформления для состояния фокуса в целях обеспечения доступности. */
 
 
 input[type=range]::-ms-track 
@@ -210,4 +210,44 @@ $track-radius: 30px
     text-align: center;
 
 @media screen
-  
+  input[type=range]
+    width: 336px
+    background: none
+
+  .range-slider
+    margin: 0 auto
+    padding: 0 
+    width: 60px
+    height: 336px
+
+    &__slider
+      width: 336px
+      height: 60px
+      transform: rotate(-90deg) 
+      transform-origin: 170px 170px
+
+    &--light, &--light-disabled
+      &::before
+        z-index: 10
+        left: 11px
+        top: 294px
+      &::after
+        z-index: 10
+        right: 11px
+        top: 16px
+
+    &--temperature, &--temperature-disabled
+      &::before
+        z-index: 10
+        left: 16px
+        top: 300px
+      &::after
+        z-index: 10
+        right: 16px
+        top: 24px
+
+  .circle-indicator
+    &__diagram
+      margin-left: -80px
+    &__control-knob
+      margin-left: -80px
