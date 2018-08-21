@@ -1,5 +1,6 @@
 html
-  width: 375px
+  @media screen and (max-width: 375px)
+    width: 375px
   -webkit-text-size-adjust: none;
   
 body
@@ -14,7 +15,7 @@ input, textarea
   &--border-bottom
     border-bottom: 1px solid #f0f0f0
 
-    @media screen
+    @media screen and (max-width: 375px)
       border: none
 
 .wrapper
@@ -22,14 +23,15 @@ input, textarea
   padding: 0 40px
   max-width: 1286px
 
-  @media screen
+  @media screen and (max-width: 375px)
     padding: 0 20px
 
 .body-wrapper
   transition: all .6s ease
-  overflow-x: hidden
+  @media screen and (max-width: 375px)
+    overflow-x: hidden
 
-  @media screen
+  @media screen and (max-width: 375px)
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -65,7 +67,7 @@ input, textarea
   align-items: center
   margin-bottom: 20px
 
-  @media screen
+  @media screen and (max-width: 375px)
     height: 21px
 
   .section-heading

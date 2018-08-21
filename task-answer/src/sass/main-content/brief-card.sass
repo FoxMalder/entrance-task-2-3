@@ -12,7 +12,7 @@
   background: $light-bg-color
   transition: all .5s ease
 
-  @media screen
+  @media screen and (max-width: 375px)
     width: 200px
     margin-bottom: 0
     margin-right: 20px
@@ -33,7 +33,7 @@
     color: $primary-color
     letter-spacing: 0
     text-align: left
-    @media screen
+    @media screen and (max-width: 375px)
       display: table-cell
       height: 32px
       margin-bottom: 0
@@ -54,7 +54,7 @@
       margin-bottom: 0
     .brief-card__status
       margin-top: 2px
-    @media screen
+    @media screen and (max-width: 375px)
       flex: 200px 1 0
       padding: 15px
 
@@ -84,7 +84,7 @@
 
 
 .brief-cards-list-nav
-  @media screen
+  @media screen and (max-width: 375px)
     display: none
   &__item
     @include button-reset(0, 0, 0)

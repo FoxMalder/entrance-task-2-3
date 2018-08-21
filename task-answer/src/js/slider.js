@@ -16,7 +16,7 @@ function initSlider(tag, params){
     controls: true,
     elastic:true,
     responsive: {
-      0: {
+      320: {
         axis: 'horizontal',
         controls: false,
         fixedWidth: 200,
@@ -24,8 +24,8 @@ function initSlider(tag, params){
       },
       376: {        
         axis: params.axis,
-        //fixedWidth: 200,    
-        //gutter: 15,
+        fixedWidth: 200,    
+        gutter: 15,
         controls: true
       }
     }

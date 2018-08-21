@@ -33,17 +33,17 @@
   .section-heading + .color-button-list
     margin: 0 auto 0 13px
 
-    @media screen
+    @media screen and (max-width: 375px)
       margin: 0
   .color-button-list
-    @media screen
+    @media screen and (max-width: 375px)
       position: relative
       z-index: 500
       flex-direction: column
       
 
     &-wrapper
-      @media screen
+      @media screen and (max-width: 375px)
         transform: scale(0)
         position: absolute
         z-index: -500
@@ -65,15 +65,15 @@
           padding-left: 30px
 
       &--show
-        @media screen
+        @media screen and (max-width: 375px)
           transform: scale(1)
     &__item
-      @media screen
+      @media screen and (max-width: 375px)
         //display: none
         margin: 0
         padding-right: 33px
       &--toggle
-        @media screen
+        @media screen and (max-width: 375px)
           position: relative
           display: block
           &::after

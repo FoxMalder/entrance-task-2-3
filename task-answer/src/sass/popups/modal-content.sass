@@ -17,7 +17,7 @@ $modal-content-button-height: 60px
   transition: opacity .2s ease, transform .6s ease, left .4s ease , top .4s ease 
   transform-origin: 0 0
 
-  @media screen
+  @media screen and (max-width: 375px)
     width: 334px
     margin-left: -(334px / 2)
     margin-top: -385px
@@ -40,7 +40,7 @@ $modal-content-button-height: 60px
     box-sizing: border-box
     background: $white
 
-    @media screen
+    @media screen and (max-width: 375px)
       overflow: hidden
       margin-bottom: 15px
       padding: 20px
@@ -56,7 +56,7 @@ $modal-content-button-height: 60px
     letter-spacing: 0;
     text-align: center;
 
-    @media screen
+    @media screen and (max-width: 375px)
       flex-wrap: wrap
 
   &__button
@@ -68,7 +68,7 @@ $modal-content-button-height: 60px
 
     &:not(:last-child)
       margin-right: 16px
-      @media screen
+      @media screen and (max-width: 375px)
         margin: 0
         margin-bottom: 15px
         
@@ -88,7 +88,7 @@ $modal-content-button-height: 60px
     justify-content: space-between
     margin-bottom: 18px
 
-    @media screen
+    @media screen and (max-width: 375px)
       margin-bottom: 13px
 
   
@@ -100,7 +100,7 @@ $modal-content-button-height: 60px
     font-size: 27px
     color: $primary-color
 
-    @media screen
+    @media screen and (max-width: 375px)
       margin-bottom: 3px
       font-size: 18px
       
@@ -110,14 +110,14 @@ $modal-content-button-height: 60px
     font-size: 14px
     color: $primary-color
 
-    @media screen
+    @media screen and (max-width: 375px)
       font-size: 12px
 
 
     &-info
       display: flex
 
-      @media screen
+      @media screen and (max-width: 375px)
         display: none
 
       &-value
