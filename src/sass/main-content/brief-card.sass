@@ -13,14 +13,14 @@
   transition: all .5s ease
 
   @media screen and (max-width: 375px)
-    width: 200px
+    width: 200px !important
     margin-bottom: 0
     margin-right: 20px
     padding-top: 55px
 
   &:hover
-    background: $white;
-    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+    background: $white
+    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50)
     cursor: pointer
 
   &__name
@@ -50,6 +50,7 @@
 
   &--short
     min-height: 100px
+    max-width: 200px
     .brief-card__name
       margin-bottom: 0
     .brief-card__status
@@ -57,6 +58,8 @@
     @media screen and (max-width: 375px)
       flex: 200px 1 0
       padding: 15px
+      padding-top: 35px
+      display: flex !important
 
   @mixin brief-card-icon($url)
     content: ''
@@ -118,4 +121,3 @@
         opacity: .5
         background-image: url('/assets/Icons / Arrow Right / M Copy@1x.png')
         */
-      

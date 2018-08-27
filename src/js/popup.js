@@ -180,7 +180,7 @@ export default function briefCard(containerCards, containerModals, url, appearen
           }
 
           let modal = _renderModal(data)
-          if(data.icon == 'floor' || data.icon == 'floor-disabled')
+          if(data.icon === 'floor' || data.icon === 'floor-disabled')
             drawSector(modal)
             
           modalsContainer.appendChild(modal);
@@ -201,7 +201,7 @@ export default function briefCard(containerCards, containerModals, url, appearen
             })
           })
 
-          if(data.icon == 'temperature' || data.icon == 'temperature-disabled'){
+          if(data.icon === 'temperature' || data.icon === 'temperature-disabled'){
             watchInputChange(card, modal)
           }
         }
@@ -215,15 +215,19 @@ export default function briefCard(containerCards, containerModals, url, appearen
         prevButton: ' .brief-cards-list-nav__item-prev',
         nextButton: ' .brief-cards-list-nav__item-next'
       })
-      /*slider('#favorite-scenarios', {
-        axis: 'horizontal'
-      })*/
-      adaptiveSlider = slider('#main-info', {
+      slider('#main-info', {
         axis: 'vertical',
         items: 3,
         rewind: true,
         nextButton: ' .main-info__brief-cards-next',
         prevButton: ' .main-info__brief-cards-prev'
+      });
+      slider('#favorite-scenarios', {
+        axis: 'horizontal',
+        items: 1,
+        rewind: false,
+        nextButton: ' .brief-cards-list-nav__item-prev',
+        prevButton: ' .brief-cards-list-nav__item-next'
       })
 
 

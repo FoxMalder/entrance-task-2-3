@@ -2,10 +2,17 @@
   grid-area: favorite-scenarios
   min-height: 140px
 
+  .heading-block-wrapper
+    max-width: 630px
+
+  .tns-ovh
+    overflow: hidden !important
+
   &__scenarios-list
     //display: flex
     //flex-wrap: wrap
     //justify-content: flex-start
+    overflow: hidden
     display: grid
     grid-template-columns: repeat(auto-fill, 200px)
     grid-template-rows: repeat(3, auto)

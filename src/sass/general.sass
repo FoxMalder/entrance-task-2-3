@@ -1,15 +1,15 @@
 html
   @media screen and (max-width: 375px)
     width: 375px
-  -webkit-text-size-adjust: none;
-  
+  -webkit-text-size-adjust: none
+
 body
   @include regular-font
   color: $primary-color
 
 button
   cursor: pointer
-input, textarea 
+input, textarea
   outline: none
 .container
   &--border-bottom
@@ -37,7 +37,7 @@ input, textarea
   //@media screen and (max-width: 375px)
 
 .tns-horizontal.tns-subpixel>div, .tns-horizontal.tns-subpixel>li
-  
+
   @media screen and (min-width: 376px)
     display: flex !important
 .main-info__brief-cards
@@ -46,8 +46,13 @@ input, textarea
 .brief-card.tns-item
   @media screen and (max-width: 375px)
     display: inline-block !important
+
+.brief-card--short.tns-item
+  @media screen and (max-width: 375px)
+    display: flex !important
+
 .content-blur
-  filter: blur(2px);
+  filter: blur(2px)
 
 .modal-overlay
   position: fixed
@@ -68,8 +73,8 @@ input, textarea
   margin-bottom: 18px
   @include bold-font
   font-weight: bold
-  font-size: 18px;
-  color: $primary-color;
+  font-size: 18px
+  color: $primary-color
 
 .heading-block-wrapper
   display: flex
