@@ -16,7 +16,7 @@ function initSlider(tag, params){
     elastic:true,
     fixedWidth: 200,
     gutter: 15,
-    axis: params.axis,
+    axis: document.documentElement.clientWidth > 1200 ? params.axis : 'horizontal',
     responsive: {
       0: {
         controls: false
