@@ -9,15 +9,15 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
   };
 }
 
-function describeArc(x, y, radius, startAngle, endAngle, largeArcFlag){
+function describeArc(x, y, radius, startAngle, endAngle){
 
     var start = polarToCartesian(x, y, radius, endAngle);
     var end = polarToCartesian(x, y, radius, startAngle)
-
-    /*if(startAngle > endAngle) // to count always clockwise
+    let largeArcFlag;
+    if(startAngle > endAngle) // to count always clockwise
       largeArcFlag = endAngle - startAngle <= 180 ? "1" : "0";
     else
-      largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";*/
+      largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
 
     var d = [
@@ -47,9 +47,9 @@ export default function drawSector(el){
       } else {
           largeArcFlagA = 1
           largeArcFlagI = 0
-          middlePoint = (1.5 * (percentage - 50)).toFixed(0);
+          middlePoint = (3 * (percentage - 50)).toFixed(0);
       }
-      console.log(middlePoint);
+      console.log(middlePoint, percentage);
 
       //pathActive.setAttribute("d", describeArc(110, 110, 100, 210, 90)); // x, y, radius, startAngle, endAngle
       //pathInactive.setAttribute("d", describeArc(110, 110, 100, 90, 150)); // x, y, radius, startAngle, endAngle
