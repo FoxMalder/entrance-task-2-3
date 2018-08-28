@@ -7,7 +7,6 @@ export default function knob(modal) {
     let value = modal.querySelector(".circle-indicator__value");
     let status = modal.querySelector('.modal-content__status-info-value');
     let svg = modal.querySelector('svg');
-    let sections = 10;
 
     function killTweens() {
         TweenLite.killTweensOf(knob);
@@ -42,14 +41,10 @@ export default function knob(modal) {
         bounds: {minRotation: 2, maxRotation: 302},
         onDragStart: killTweens,
         onDrag: onRotateKnob,
-        onThrowUpdate: onRotateKnob,
-        snap: function (endValue) {
-            var step = 300 / (sections - 1);
-            return Math.round(endValue / step) * step;
-        }
+        onThrowUpdate: onRotateKnob
     });
 
 
-    var dragKnob = Draggable.get(knob);
+    let dragKnob = Draggable.get(knob); // for easy access
 }
 

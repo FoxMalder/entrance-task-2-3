@@ -1,7 +1,5 @@
-var largeArcFlagA, largeArcFlagI;
-
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = (angleInDegrees-240) * Math.PI / 180.0;
+  let angleInRadians = (angleInDegrees-240) * Math.PI / 180.0;
 
   return {
     x: centerX + (radius * Math.cos(angleInRadians)),
@@ -11,16 +9,14 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 
 function describeArc(x, y, radius, startAngle, endAngle){
 
-    var start = polarToCartesian(x, y, radius, endAngle);
-    var end = polarToCartesian(x, y, radius, startAngle);
+    let start = polarToCartesian(x, y, radius, endAngle);
+    let end = polarToCartesian(x, y, radius, startAngle);
     let largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
-    var d = [
-        "M", start.x, start.y, 
+    return [
+        "M", start.x, start.y,
         "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
     ].join(" ");
-
-    return d;       
 }
 
 export default function drawSector(el){
