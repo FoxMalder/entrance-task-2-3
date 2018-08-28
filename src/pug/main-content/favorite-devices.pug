@@ -12,24 +12,24 @@ include ../color-button-list-item
 - ]
 
 - var colorButtons = [
--  {text: 'Все'},
--  {text: 'Кухня'},
--  {text: 'Зал'},
--  {text: 'Лампочки'},
--  {text: 'Камеры'}
+-  {text: 'Все', location: 'all'},
+-  {text: 'Кухня', location: 'kitchen'},
+-  {text: 'Зал', location: 'hall'},
+-  {text: 'Лампочки', location: 'light'},
+-  {text: 'Камеры', location: 'camera'}
 - ]
 
 section.favorite-devices#favorite-devices
   .heading-block-wrapper
     h2.section-heading Избранные устройства
     .color-button-list
-      +color-button-list-item(colorButtons[0].text, true, true)
+      +color-button-list-item(colorButtons[0].text, true, true, colorButtons[0].location)
       .color-button-list-wrapper
         - var i = 1
         while i < colorButtons.length
-          +color-button-list-item(colorButtons[i++].text, false, false)
+          +color-button-list-item(colorButtons[i].text, false, false, colorButtons[i++].location)
         
     +brief-cards-list-nav()
   ul.favorite-devices__devices-list.slider#favorite-devices__devices-list
-    // each card in cards
-        +brief-card(card.name, card.status, card.icon)
+// each card in cards
+    +brief-card(card.name, card.status, card.icon)

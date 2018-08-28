@@ -5,6 +5,7 @@ import Draggable from "gsap/Draggable";
 export default function knob(modal) {
     let knob = modal.querySelector(".circle-indicator__control-knob");
     let value = modal.querySelector(".circle-indicator__value");
+    let input = modal.querySelector(".range-slider__slider");
     let status = modal.querySelector('.modal-content__status-info-value');
     let svg = modal.querySelector('svg');
 
@@ -21,12 +22,15 @@ export default function knob(modal) {
         svg.dataset.percent = percent;
         drawSector(modal);
         if( percent <= 4) {
+            input.value = 0;
             value.textContent = '0';
             status.textContent = value.textContent;
         } else if (percent >= 96) {
+            input.value = 30;
             value.textContent = '+30';
             status.textContent = value.textContent;
         } else {
+            input.value = ((30 * percent) / 100).toFixed(0);
             value.textContent = '+' + ((30 * percent) / 100).toFixed(0);
             status.textContent = value.textContent;
         }
