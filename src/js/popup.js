@@ -1,4 +1,5 @@
 import drawSector from './draw-sector.js'
+import knob from './knob.js'
 import slider from './slider';
 
 const colorButtons = {
@@ -21,24 +22,23 @@ var adaptiveSlider;
 function _getAppearence(appearence){
   switch(appearence){
     case 'short':
-      return 'brief-card--short'
-      break;
+      return 'brief-card--short';
     default:
-      return ''
+      return '';
   }
 }
 
 function _renderCard(data){
   let card = document.createElement('LI');
   card.className = `brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${_getAppearence(data.appearence)}`;
-  card.innerHTML = _renderTemplate(data, 'briefCardTemplate')
+  card.innerHTML = _renderTemplate(data, 'briefCardTemplate');
   return card;
 }
 
 function _renderModal(data){
-  let modal = document.createElement('section')
-  modal.className = 'modal-content'
-  modal.innerHTML = _renderTemplate(data, 'modalContentTemplate')
+  let modal = document.createElement('section');
+  modal.className = 'modal-content';
+  modal.innerHTML = _renderTemplate(data, 'modalContentTemplate');
   return modal;
 }
 
@@ -73,15 +73,14 @@ function _renderTemplate(data, template){
             <label class="range-slider range-slider--${data.icon}">
                 ${inputType == 'floor'?
                   `<div class="circle-indicator">
-                    <svg class="circle-indicator__diagram" width="220" height="220" data-percent="76">
+                    <svg class="circle-indicator__diagram" width="220" height="220" data-percent="0">
                       <g>
                         <path class="circle-indicator__inactive" fill-opacity="0" d="" stroke="#333333" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
                         <path class="circle-indicator__active"ill-opacity="0" d="" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
                       </g>
-                    </svg>
-                    <div class="circle-indicator__control-knob">
-                      <div class="circle-indicator__value">+23</div>
-                    </div>
+                    </svg>                    
+                    <div class="circle-indicator__value">+23</div>
+                    <div class="circle-indicator__control-knob"></div>
                   </div>` : ''
                 }
                 <input class="range-slider__slider" type="range" ${ ( (inputType) => {
@@ -149,8 +148,6 @@ export default function briefCard(containerCards, containerModals, url, appearen
           }
 
           function moveModal(modal, x, y){
-            console.log(x, y);
-            console.log(modal.style.left, modal.style.top);
             modal.style.left = x;
             modal.style.top =  y;
 
@@ -180,9 +177,11 @@ export default function briefCard(containerCards, containerModals, url, appearen
           }
 
           let modal = _renderModal(data)
-          if(data.icon === 'floor' || data.icon === 'floor-disabled')
-            drawSector(modal)
-            
+          if(data.icon === 'floor' || data.icon === 'floor-disabled') {
+            drawSector(modal);
+            knob(modal);
+            console.log(modal);
+          }
           modalsContainer.appendChild(modal);
           let initialCoords = setInitialCoords(card, modal)
 
@@ -210,7 +209,7 @@ export default function briefCard(containerCards, containerModals, url, appearen
     .then(() => {
       slider('#favorite-devices', {
         axis: 'horizontal',
-        items: 6,
+        items: 5,
         rewind: false,
         prevButton: ' .brief-cards-list-nav__item-prev',
         nextButton: ' .brief-cards-list-nav__item-next'
@@ -229,44 +228,6 @@ export default function briefCard(containerCards, containerModals, url, appearen
         nextButton: ' .brief-cards-list-nav__item-prev',
         prevButton: ' .brief-cards-list-nav__item-next'
       })
-
-
-      
     })
-  
 }
-
-/*function debounce(func){
-  var timer;
-  return function(event){
-    if(timer) clearTimeout(timer);
-    timer = setTimeout(func,300,event);
-  };
-}
-
-window.addEventListener("resize",debounce(function(e){
-  if(document.documentElement.clientWidth > 375 && adaptiveSlider.axis !== 'vertical'){
-    console.log(adaptiveSlider.destroy())
-    //adaptiveSlider.destroy()
-
-    adaptiveSlider = slider('#main-info', {
-      axis: 'vertical',
-      items: 3,
-      rewind: true,
-      nextButton: ' .main-info__brief-cards-next',
-      prevButton: ' .main-info__brief-cards-prev'
-    })
-  
-  } else if(document.documentElement.clientWidth <= 375 && adaptiveSlider.axis !== 'horizontal') {
-    //adaptiveSlider.destroy()
-
-    adaptiveSlider = slider('#main-info', {
-      axis: 'horizontal',
-      items: 3,
-      rewind: true,
-      nextButton: ' .main-info__brief-cards-next',
-      prevButton: ' .main-info__brief-cards-prev'
-    })
-  }
-}));*/
 

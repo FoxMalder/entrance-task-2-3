@@ -100,20 +100,20 @@ input[type=range]::-ms-track
     top: 22px
     left: 16px
     @include bold-font
-    font-size: 18px;
-    color: $white;
-    letter-spacing: 0;
-    text-align: left;
+    font-size: 18px
+    color: $white
+    letter-spacing: 0
+    text-align: left
   &::after
     content: $after-content
     position: absolute
     top: 22px
     right: 20px
     @include bold-font
-    font-size: 18px;
-    color: $white;
-    letter-spacing: 0;
-    text-align: left;
+    font-size: 18px
+    color: $white
+    letter-spacing: 0
+    text-align: left
   
 $height: 60px
 $width: 60px
@@ -168,6 +168,7 @@ $track-radius: 30px
     display: block
 
 .circle-indicator
+  position: relative
 
   &__diagram
     overflow: visible !important
@@ -178,36 +179,42 @@ $track-radius: 30px
     left: 20px  
     height: 180px
     width: 180px
+    border: 8px solid $lightest-bg-color
+    box-sizing: border-box
     border-radius: 50%
-    background: $lightest-bg-color;
-    box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);
+    background: transparent //$lightest-bg-color;
+    box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45)
 
     &::after
       content: ''
-      position: absolute;
-      display: block;
-      box-sizing: content-box;
-      top: 30px;
-      margin-top: -30px;
-      left: 50%;
-      width: 0;
-      height: 0;
-      padding: 0;
-      background: transparent;
-      border: 5px solid transparent;
-      border-bottom-color: $primary-color;
-      border-top: 0;
-      transform: rotate(90deg)
+      position: absolute
+      display: block
+      box-sizing: content-box
+      top: 30px
+      margin-top: -30px
+      left: 50%
+      width: 0
+      height: 0
+      padding: 0
+      background: transparent
+      border: 5px solid transparent
+      border-bottom-color: $primary-color
+      border-top: 0
+      transform: rotate(-155deg)
       transform-origin: 0 90px
 
   &__value
+    position: absolute
+    top: 20px
+    left: 60px
+    width: 120px
     margin-left: -8px
     @include bold-font
-    font-size: 66px;
-    color: $primary-color;
-    letter-spacing: 0;
+    font-size: 66px
+    color: $primary-color
+    letter-spacing: 0
     line-height: 180px
-    text-align: center;
+    text-align: center
 
 @media screen and (max-width: 375px)
   input[type=range]
