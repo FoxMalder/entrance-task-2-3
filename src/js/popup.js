@@ -17,8 +17,6 @@ const colorButtons = {
   ]
 }
 
-var adaptiveSlider;
-
 function _getAppearence(appearence){
   switch(appearence){
     case 'short':
@@ -31,6 +29,7 @@ function _getAppearence(appearence){
 function _renderCard(data){
   let card = document.createElement('LI');
   card.className = `brief-card ${data.icon ? 'brief-card--' + data.icon : ''} ${_getAppearence(data.appearence)}`;
+  card.dataset.location = data.location ? data.location.join(' ') : '';
   card.innerHTML = _renderTemplate(data, 'briefCardTemplate');
   return card;
 }
@@ -79,7 +78,7 @@ function _renderTemplate(data, template){
                         <path class="circle-indicator__active"ill-opacity="0" d="" stroke="#F5A623" stroke-width="30" stroke-dasharray="1, 4" stroke-dashoffset="3" fill="none"></path>
                       </g>
                     </svg>                    
-                    <div class="circle-indicator__value">+23</div>
+                    <div class="circle-indicator__value">0</div>
                     <div class="circle-indicator__control-knob"></div>
                   </div>` : ''
                 }
@@ -89,7 +88,7 @@ function _renderTemplate(data, template){
                   else if(inputType == 'light')
                     return 'min="0" max="1000" value="300" data-type="' + inputType +'"';
                   else if(inputType == 'floor')
-                    return 'input(type="range" min="0" max="30" value="23" data-type="' + inputType + '"';
+                    return 'min="0" max="30" value="0" data-type="' + inputType + '"';
                   else
                     return ''
                 } )(inputType)}">
@@ -113,7 +112,7 @@ function _renderTemplate(data, template){
   }
 }
 
-export default function briefCard(containerCards, containerModals, url, appearence, hasModal){
+export default function briefCard(containerCards, containerModals, url, appearence, hasModal, res){
   const cardsContainer = document.querySelector(containerCards),
         modalsContainer = document.querySelector(containerModals)
       
@@ -228,6 +227,6 @@ export default function briefCard(containerCards, containerModals, url, appearen
         nextButton: ' .brief-cards-list-nav__item-prev',
         prevButton: ' .brief-cards-list-nav__item-next'
       })
-    })
+    }).then( () => { if(res) res(); })
 }
 
