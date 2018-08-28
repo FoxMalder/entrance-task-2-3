@@ -14,7 +14,11 @@ export default function knob(modal) {
     }
 
     function onRotateKnob() {
-        let percent = dragKnob.endRotation / 3
+        let percent = dragKnob.endRotation / 3; //console.log(percent);
+        let lowBound = 0, highBound = 100;
+        // limit percent in 0 and 100 range
+        percent = Math.max(lowBound, Math.min(percent, highBound)); //console.log(percent);
+
         svg.dataset.percent = percent;
         drawSector(modal);
         if( percent <= 4) {
@@ -27,8 +31,6 @@ export default function knob(modal) {
             value.textContent = '+' + ((30 * percent) / 100).toFixed(0);
             status.textContent = value.textContent;
         }
-
-        console.log('rotate', dragKnob);
 
     }
 

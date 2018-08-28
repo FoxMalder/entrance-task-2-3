@@ -1,7 +1,7 @@
 var largeArcFlagA, largeArcFlagI;
 
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
+  var angleInRadians = (angleInDegrees-240) * Math.PI / 180.0;
 
   return {
     x: centerX + (radius * Math.cos(angleInRadians)),
@@ -12,13 +12,8 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 function describeArc(x, y, radius, startAngle, endAngle){
 
     var start = polarToCartesian(x, y, radius, endAngle);
-    var end = polarToCartesian(x, y, radius, startAngle)
-    let largeArcFlag;
-    if(startAngle > endAngle) // to count always clockwise
-      largeArcFlag = endAngle - startAngle <= 180 ? "1" : "0";
-    else
-      largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-
+    var end = polarToCartesian(x, y, radius, startAngle);
+    let largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
     var d = [
         "M", start.x, start.y, 
@@ -37,24 +32,20 @@ export default function drawSector(el){
       //strokeWidth = parseInt(pathActive.getAttribute('stroke-width'), 10),
       //radius = parseInt((height / 2) - (strokeWidth / 2),10),
       percentage = svg.getAttribute("data-percent"),
-      startAngle = 210; //, endAngle = 150;
+      startAngle = 0; //, endAngle = 150;
       let middlePoint;
 
-      if( percentage < 50){
-          largeArcFlagA = 0
-          largeArcFlagI = 1
+      /*if( percentage < 50){
           middlePoint = (startAngle - (1.5 * percentage)).toFixed(0);
       } else {
-          largeArcFlagA = 1
-          largeArcFlagI = 0
           middlePoint = (3 * (percentage - 50)).toFixed(0);
-      }
-      console.log(middlePoint, percentage);
+      }*/
+      middlePoint = percentage * 3;
 
       //pathActive.setAttribute("d", describeArc(110, 110, 100, 210, 90)); // x, y, radius, startAngle, endAngle
       //pathInactive.setAttribute("d", describeArc(110, 110, 100, 90, 150)); // x, y, radius, startAngle, endAngle
 
-      pathActive.setAttribute("d", describeArc(110, 110, 100, 210, middlePoint, largeArcFlagA)); // x, y, radius, startAngle, endAngle
-      pathInactive.setAttribute("d", describeArc(110, 110, 100, middlePoint, 150, largeArcFlagI)); // x, y, radius, startAngle, endAngle
+      pathActive.setAttribute("d", describeArc(110, 110, 100, 0, middlePoint)); // x, y, radius, startAngle, endAngle
+      pathInactive.setAttribute("d", describeArc(110, 110, 100, middlePoint, 300)); // x, y, radius, startAngle, endAngle
 
 }
